@@ -1,0 +1,77 @@
+      <!-- ============================================================
+           MAPP architecture — FLOW layout. Home page only.
+           Replaces the radial (architecture.html, kept but no longer
+           included) with a left-to-right reading of the same idea:
+           shop floor → MAPP → top floor.
+
+           WHY HTML AND NOT SVG.
+           The radial was one 1160x890 SVG plus a second 380x900 SVG for
+           phones, because a ring has a fixed aspect ratio and cannot be
+           both wide and legible. This layout has no fixed ratio — three
+           columns on a desktop, one stack on a phone — so it needs no
+           second copy, and the six module tiles stay real links with
+           selectable, indexable text.
+
+           Every label here already existed in the radial. Nothing was
+           written for this layout.
+
+           MOTION.
+           One idea, shown twice: telemetry travelling in from the floor
+           and context travelling back out to the enterprise. The dotted
+           rails are static; only the two pulses move, on transform, and
+           they stop dead under prefers-reduced-motion.
+           ============================================================ -->
+      <div class="archflow" data-reveal="fade">
+
+        <!-- ---------- Shop floor ---------- -->
+        <div class="archflow__side archflow__side--floor">
+          <span class="archflow__label">Shop floor</span>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.05s">PLC / PAC</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.10s">Robot cells</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.15s">Sensors / IO</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.20s">Vision systems</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.25s">Drives / energy</div>
+        </div>
+
+        <!-- Telemetry in -->
+        <div class="archflow__rail archflow__rail--in" aria-hidden="true">
+          <i class="archflow__pulse"></i>
+        </div>
+
+        <!-- ---------- MAPP ---------- -->
+        <div class="archflow__core" data-reveal style="--reveal-delay:.3s">
+          <div class="archflow__core-head">
+            <span class="archflow__core-name">MAPP</span>
+            <span class="archflow__core-sub">MES / IIoT &middot; on-prem or cloud</span>
+          </div>
+
+          <div class="archflow__mods">
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-eye.html"><strong>Eye</strong><span>OEE</span></a>
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-zen.html"><strong>Zen</strong><span>Quality</span></a>
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-trail.html"><strong>Trail</strong><span>Traceability</span></a>
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-vita.html"><strong>Vita</strong><span>Maintenance</span></a>
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-adept.html"><strong>Adept</strong><span>Scheduling</span></a>
+            <a class="archflow__mod" href="{{BASE}}mapp/mapp-sprint.html"><strong>Sprint</strong><span>Supply</span></a>
+          </div>
+
+          <p class="archflow__protos">
+            <code>OPC UA</code><code>MQTT</code><code>Modbus TCP</code><code>PROFINET</code><code>EtherNet/IP</code>
+          </p>
+        </div>
+
+        <!-- Context out -->
+        <div class="archflow__rail archflow__rail--out" aria-hidden="true">
+          <i class="archflow__pulse"></i>
+        </div>
+
+        <!-- ---------- Top floor ---------- -->
+        <div class="archflow__side archflow__side--ent">
+          <span class="archflow__label">Top floor</span>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.05s">ERP / SAP</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.10s">BI &amp; reporting</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.15s">Planning</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.20s">Quality dept</div>
+          <div class="archflow__node" data-reveal style="--reveal-delay:.25s">Management</div>
+        </div>
+
+      </div>

@@ -1,0 +1,21 @@
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+*.swp
+*~
+
+# Logs / temp
+*.log
+*.tmp
+
+# Editor/tool backups
+*.bak
+
+# Generated standalone app - build it with: node _tools/build-standalone.js
+dist-app/
+
+# Build-time only: see package.json. build.sh degrades gracefully without them.
+_tools/node_modules/

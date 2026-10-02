@@ -1,0 +1,73 @@
+@TITLE The Operator Is Not the Problem. The System Is.
+@DESC At a manufacturing plant running high-mix CNC and special-purpose machines, operators were asked to enter downtime reasons at the end of their shift. By…
+@NAV company
+@OUT blog/operator-is-not-the-problem.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><a href="{{BASE}}insights.html">Insights</a><span class="sep">/</span><span aria-current="page">The Operator Is Not the Problem. The System That Asks Them to Remember Is.</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">Data Quality</span>
+        <h1 data-reveal>The Operator Is Not the Problem. The System That Asks Them to Remember Is.</h1>
+        <p class="article-meta" data-reveal style="--reveal-delay:.12s">
+          <time datetime="2026-06-19">19 June 2026</time><span class="dot"></span><span>2 min read</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--narrow">
+
+      <img class="article-hero" src="{{BASE}}assets/img/insights/wide/operator-is-not-the-problem.jpg"
+           alt="" width="1200" height="675" fetchpriority="high" decoding="async" data-reveal="fade">
+
+      <div class="prose" data-reveal="fade" style="--reveal-delay:.1s">
+          <p>At a manufacturing plant running high-mix CNC and special-purpose machines, operators were asked to enter downtime reasons at the end of their shift. By that point, the minor stoppage that happened at 10:47am had been forgotten, reclassified, or quietly absorbed into 'idle - no reason.'</p>
+          <h2>Why Reason Codes Collected After the Fact Are Mostly Fiction</h2>
+          <p>End-of-shift reason entry is one of the most common practices in manufacturing quality systems and one of the most quietly unreliable. An operator running four machines across an eight-hour shift cannot accurately recall when each stoppage happened, how long it lasted, and what caused it. They make their best judgment. They fill in the form. The data goes into the system and gets presented in the weekly meeting as fact. The problem is not dishonesty. It is memory, which degrades in direct proportion to the time between the event and the logging of it.</p>
+          <h2>What Happens When You Capture the Reason at the Moment It Occurs</h2>
+          <p>When operator interfaces at each machine prompt for a reason code the moment a stoppage is detected, the quality of data changes dramatically. Operators select from a pre-configured list while the event is still fresh. The timestamp is automatic. The machine, product, and shift are linked without the operator needing to remember them. The result is not just more data. It is more honest data. And honest data leads to very different improvement decisions than the polished version that comes from end-of-shift logging.</p>
+          <h2>The Shift in Accountability</h2>
+          <p>One plant using this approach discovered that a specific machine had a recurring alarm being logged as operator error in end-of-shift records. When captured in real time, it was clearly linked to a specific product code - one that required a fixture adjustment the machine was not reliably detecting. The alarm was a machine problem, not an operator problem. The fix took two days. The recurring loss had been running for seven months. The operator had not been wrong. They had been doing what the system asked them to do - guess at the root cause at the end of a long shift.</p>
+          <h2>The Structural Implication</h2>
+          <p>If you want better data, do not ask for more discipline from operators. Change the moment you ask for the data. The closer to the event, the more accurate the record. The more accurate the record, the better the root cause analysis. The better the root cause analysis, the fewer recurring problems. This is not a technology conversation. It is a process design conversation where technology happens to be the enabler.</p>
+          <blockquote>
+          <p>Real accountability starts with a system that makes the right behaviour easy, not one that depends on people remembering perfectly. <a href="{{BASE}}">KNEO Automation</a>
+          </p>
+          </blockquote>
+      </div>
+
+      <div class="article-foot" data-reveal="fade">
+        <a class="link" href="{{BASE}}insights.html">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12 6 8l4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to all insights</a>
+        <a class="btn btn--primary" href="{{BASE}}contact.html">Talk to our team
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Article structured data. Publisher/date come from the live post, so they
+       stay accurate; nothing here is asserted that the article does not state. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Operator Is Not the Problem. The System That Asks Them to Remember Is.",
+    "datePublished": "2026-06-19",
+    "articleSection": "Data Quality",
+    "image": "{{SITE}}/assets/img/insights/wide/operator-is-not-the-problem.jpg",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{SITE}}/blog/operator-is-not-the-problem/" },
+    "publisher": { "@type": "Organization", "name": "KNEO Automation Pvt. Ltd." }
+  }
+  </script>
+
+</main>

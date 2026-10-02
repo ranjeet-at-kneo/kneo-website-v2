@@ -1,0 +1,37 @@
+@TITLE Page Not Found | KNEO Automation
+@DESC The page you requested could not be found. Browse our automation services, MAPP platform modules and Digital Quality 4.0 products instead.
+@NAV none
+@OUT 404.html
+@@
+<main id="main">
+
+  <section class="error-page">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--tr" aria-hidden="true"></div>
+    <div class="container container--narrow" style="position:relative">
+      <div class="error-page__code" aria-hidden="true">404</div>
+      <span class="eyebrow eyebrow--plain" style="justify-content:center;display:inline-flex">Signal lost</span>
+      <h1 class="h2" style="margin-top:.5rem">This page isn't on the network.</h1>
+      <p class="lead mt-2" style="margin-inline:auto;max-width:52ch">
+        The address you followed doesn't match anything on our site. It may have been moved, renamed,
+        or it may never have existed.
+      </p>
+
+      <div class="btn-row btn-row--center">
+        <a class="btn btn--primary btn--lg" href="{{BASE}}index.html">Back to Home
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--ghost btn--lg" href="{{BASE}}sitemap.html">View the sitemap</a>
+      </div>
+
+      <h2 class="sr-only">Popular pages</h2>
+      <div class="grid grid-4 gap-md mt-4" style="text-align:left">
+        <a class="card card--hover" href="{{BASE}}services.html"><span class="cell__tag">Popular</span><h3 class="h5">Services</h3><p class="small">Eight automation services from design to commissioning.</p></a>
+        <a class="card card--hover" href="{{BASE}}mapp.html"><span class="cell__tag">Popular</span><h3 class="h5">MES Platform</h3><p class="small">Six connected MES and IIoT modules.</p></a>
+        <a class="card card--hover" href="{{BASE}}products.html"><span class="cell__tag">Popular</span><h3 class="h5">Products</h3><p class="small">Digital Quality 4.0 software products.</p></a>
+        <a class="card card--hover" href="{{BASE}}contact.html"><span class="cell__tag">Popular</span><h3 class="h5">Contact</h3><p class="small">Talk to an automation engineer directly.</p></a>
+      </div>
+    </div>
+  </section>
+
+</main>

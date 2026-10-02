@@ -1,0 +1,12 @@
+{
+  "name": "kneo-website",
+  "private": true,
+  "description": "Build tooling only. The site ships zero runtime dependencies - these packages let build.sh minify assets/css/main.css and assets/js/main.js into the .min copies the pages load. Deliberately no \"build\" script: Vercel runs one if it finds it, and this repo is deployed as static files that are already built. Rebuild locally with: npm run minify",
+  "scripts": {
+    "minify": "bash build.sh"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.51.2"
+  }
+}

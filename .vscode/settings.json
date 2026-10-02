@@ -1,0 +1,84 @@
+{
+  // ---------------------------------------------------------------------------
+  //  IMPORTANT — which files to edit
+  //
+  //  You edit:      _source/pages/     _source/partials/     assets/
+  //  Generated:     index.html, 404.html, about/, mapp/, services/ … (40 pages)
+  //
+  //  The generated pages are overwritten every time you run the build, so any
+  //  edit made directly to them is lost. The settings below keep them out of
+  //  search results so you cannot open one by accident and edit the wrong file.
+  //  They are still visible in the Explorer if you want to inspect the output.
+  // ---------------------------------------------------------------------------
+
+  "search.exclude": {
+    "index.html": true,
+    "404.html": true,
+    "about/**": true,
+    "careers/**": true,
+    "contact/**": true,
+    "expertise/**": true,
+    "faq/**": true,
+    "industrial-automation/**": true,
+    "industries/**": true,
+    "insights/**": true,
+    "mapp/**": true,
+    "privacy-policy/**": true,
+    "products/**": true,
+    "services/**": true,
+    "sitemap/**": true,
+    "terms/**": true,
+    "sitemap.xml": true,
+    "robots.txt": true
+  },
+
+  // Generated output is read-only in practice — flag it if one is opened.
+  "files.readonlyInclude": {
+    "index.html": true,
+    "404.html": true,
+    "about/**": true,
+    "careers/**": true,
+    "contact/**": true,
+    "expertise/**": true,
+    "faq/**": true,
+    "industrial-automation/**": true,
+    "industries/**": true,
+    "insights/**": true,
+    "mapp/**": true,
+    "privacy-policy/**": true,
+    "products/**": true,
+    "services/**": true,
+    "sitemap/**": true,
+    "terms/**": true
+  },
+
+  // Source pages are HTML fragments with an @TITLE/@DESC/@NAV/@OUT header.
+  "files.associations": {
+    "_source/pages/**/*.html": "html",
+    "_source/partials/*.html": "html",
+    "*.cmd": "bat"
+  },
+
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "off",
+  "editor.renderWhitespace": "selection",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+
+  "[html]": { "editor.defaultFormatter": null, "editor.formatOnSave": false },
+  "[css]":  { "editor.formatOnSave": false },
+  "[javascript]": { "editor.formatOnSave": false },
+
+  "emmet.includeLanguages": { "html": "html" },
+  "css.lint.unknownProperties": "ignore",
+  "html.format.wrapLineLength": 0,
+
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "README.md": "build.sh, start-server.cmd, .htaccess, robots.txt, sitemap.xml"
+  },
+
+  "terminal.integrated.defaultProfile.windows": "Git Bash"
+}

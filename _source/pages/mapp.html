@@ -1,0 +1,267 @@
+@TITLE MAPP Platform | Modular MES &amp; IIoT for Manufacturing
+@DESC MAPP is a modular, AI-driven MES/IIoT platform - six modules covering OEE, digital quality, traceability, maintenance, scheduling and supply chain.
+@NAV mapp
+@OUT mapp.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--tr" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><span aria-current="page">MES Platform</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">MAPP · MES / IIoT Platform</span>
+        <h1 data-split>Transform your factory with a modular, AI-driven <span class="accent-text">IIoT &amp; MES</span> platform.</h1>
+        <p class="lead" data-reveal style="--reveal-delay:.3s">
+          MAPP is a next-generation digital manufacturing suite built as a secure, web-based platform for
+          both on-premise and cloud environments. Six modules, one platform, complete visibility from shop
+          floor to top floor. <strong class="ink">Modular. Intelligent. Connected.</strong>
+        </p>
+        <div class="btn-row" data-reveal style="--reveal-delay:.4s">
+          <a class="btn btn--primary" href="{{BASE}}contact.html?req=mapp">Request a Demo
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#modules">Explore the six modules</a>
+          <!-- The platform deck. download makes it save rather than open in
+               the browser's PDF viewer. -->
+          <a class="btn btn--ghost btn--download" href="{{BASE}}assets/docs/KNEO_MAPP_MES_Platform.pdf"
+             download aria-label="Download the MAPP MES platform brochure (PDF)">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8m0 0L5 7m3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download brochure
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="subnav" aria-label="On this page">
+    <div class="container"><div class="subnav__inner">
+      <a href="#why">Why MAPP</a>
+      <a href="#architecture">MES architecture</a>
+      <a href="#modules">Modules</a>
+      <a href="#deployment">Deployment</a>
+      <a href="#outcomes">Outcomes</a>
+    </div></div>
+  </nav>
+
+  <!-- Module orbit. Sources the six modules from #modules further down the
+       page, so they exist in the markup once rather than twice. -->
+  <section class="section section--alt" aria-labelledby="orbit-heading">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow" data-reveal="fade">The six modules</span>
+          <h2 id="orbit-heading" data-reveal>One Connected <br>Factory.</h2>
+        </div>
+        <p class="lead" data-reveal style="--reveal-delay:.15s">
+          Start with one module. Add the rest when you're ready.
+        </p>
+      </div>
+
+      <div class="orbit" data-orbit="#modules" data-reveal="fade">
+        <div class="orbit__stage">
+          <div class="orbit__ring">
+            <div class="orbit__circle orbit__circle--outer" aria-hidden="true"></div>
+            <div class="orbit__circle orbit__circle--inner" aria-hidden="true"></div>
+            <svg class="orbit__spokes" viewBox="0 0 400 400" aria-hidden="true"><line x1="200" y1="200" x2="200" y2="50"/><line x1="200" y1="200" x2="330" y2="125"/><line x1="200" y1="200" x2="330" y2="275"/><line x1="200" y1="200" x2="200" y2="350"/><line x1="200" y1="200" x2="70" y2="275"/><line x1="200" y1="200" x2="70" y2="125"/></svg>
+            <div class="orbit__pulse" aria-hidden="true"></div>
+            <div class="orbit__pulse orbit__pulse--late" aria-hidden="true"></div>
+            <div class="orbit__core"><strong>MAPP</strong><span>On-prem or cloud</span></div>
+          </div>
+          <div class="orbit__detail">
+            <div class="orbit__body" aria-live="polite"></div>
+            <div class="orbit__dots" role="group" aria-label="Choose a module"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow" data-reveal="fade">The problem</span>
+          <h2 data-reveal>Your machines already <br>know. Nobody's asking.</h2>
+        </div>
+        <p class="lead" data-reveal style="--reveal-delay:.15s">
+          Most plants run on spreadsheets, whiteboards and operator memory. The data needed to prevent a
+          stoppage, catch a defect or reschedule a line usually already exists inside the PLC — it just
+          never reaches anyone who can act on it.
+        </p>
+      </div>
+
+      <div class="cardgrid cardgrid--3" data-reveal-group=".08">
+        <div class="cell" data-reveal>
+          <span class="cell__tag">Before</span>
+          <h3 class="h4">Manual, delayed, disputed</h3>
+          <p>OEE calculated at month-end from handwritten logs. Downtime reasons guessed. Quality records in binders. Every meeting starts by arguing about whose numbers are right.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <span class="cell__tag">With MAPP</span>
+          <h3 class="h4">Automatic, live, trusted</h3>
+          <p>OEE, availability, performance and quality computed automatically from machine signals. Downtime captured with reason codes at the moment it happens. One version of the truth.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <span class="cell__tag">Result</span>
+          <h3 class="h4">Decisions, not reports</h3>
+          <p>Bottlenecks identified with time-stamped loss analysis. Maintenance triggered by condition, not calendar. Schedules that respect what the line can actually deliver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section section--alt" id="architecture">
+    <div class="bg-grid bg-grid--full" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal="fade">MES / IIoT architecture</span>
+        <h2 data-reveal>From sensor signal to board report.</h2>
+        <p class="lead" data-reveal style="--reveal-delay:.1s">MAPP connects machines, PLCs, sensors and enterprise systems into a single intelligent platform — using open industrial protocols rather than proprietary gateways.</p>
+      </div>
+
+      {{INCLUDE:architecture-classic}}
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="section" id="modules">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow" data-reveal="fade">The six modules</span>
+          <h2 data-reveal>One Connected <br>Factory.</h2>
+        </div>
+        <p class="lead" data-reveal style="--reveal-delay:.15s">Start with one module. Add the rest when you're ready — they share one data model, one user directory and one set of dashboards.</p>
+      </div>
+
+      <div data-reveal-group=".05">
+        <a class="index-row" href="{{BASE}}mapp/mapp-eye.html" data-reveal>
+          <span class="index-row__num">01</span>
+          <div><h3>MAPP EYE</h3><span class="index-row__tag">Performance Monitoring</span></div>
+          <p>Complete, real-time control over machine, line and plant performance. Automated OEE, live loss alerts, downtime reason codes, AI-driven analytics and custom KPI dashboards.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="index-row" href="{{BASE}}mapp/mapp-zen.html" data-reveal>
+          <span class="index-row__num">02</span>
+          <div><h3>MAPP ZEN</h3><span class="index-row__tag">Digital Quality 4.0</span></div>
+          <p>Digitises and connects every core quality process — from ballooning to PFMEA, PFD, control plans, digital inspection and online SPC — with native machine-vision support.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="index-row" href="{{BASE}}mapp/mapp-trail.html" data-reveal>
+          <span class="index-row__num">03</span>
+          <div><h3>MAPP TRAIL</h3><span class="index-row__tag">Track &amp; Trace</span></div>
+          <p>Full traceability across products, materials, people and processes. Complete genealogy, real-time WIP, 4M traceability and compliance-ready reports.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="index-row" href="{{BASE}}mapp/mapp-vita.html" data-reveal>
+          <span class="index-row__num">04</span>
+          <div><h3>MAPP VITA</h3><span class="index-row__tag">Maintenance Management</span></div>
+          <p>Unifies preventive, condition-based and predictive maintenance with condition monitoring, digital work orders, tool and spare tracking, and MTBF/MTTR analytics.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="index-row" href="{{BASE}}mapp/mapp-adept.html" data-reveal>
+          <span class="index-row__num">05</span>
+          <div><h3>MAPP ADEPT</h3><span class="index-row__tag">Production Scheduling</span></div>
+          <p>Transforms planning with an intelligent OEE-driven engine — AI-assisted scheduling, ERP order syncing, what-if analysis, load balancing and adherence analytics.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="index-row" href="{{BASE}}mapp/mapp-sprint.html" data-reveal>
+          <span class="index-row__num">06</span>
+          <div><h3>MAPP SPRINT</h3><span class="index-row__tag">Digital Supply Chain</span></div>
+          <p>Transparency, speed and intelligence across supply chain operations — material movement, supplier quality, ASN validation, batch traceability and lead-time analytics.</p>
+          <svg class="index-row__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="section section--alt" id="deployment">
+    <div class="container">
+      <div class="split">
+        <div class="split__body">
+          <span class="eyebrow" data-reveal="fade">Deployment</span>
+          <h2 data-reveal>On-premise, cloud, or both.</h2>
+          <p class="lead mt-2" data-reveal style="--reveal-delay:.1s">MAPP is a secure, web-based platform. Run it entirely inside your plant network where data residency matters, host it in the cloud for multi-site rollouts, or combine the two.</p>
+          <ul class="feature-list mt-3" data-reveal style="--reveal-delay:.2s">
+            <li>Browser-based — no client installation on operator terminals</li>
+            <li>Role-based access with audit trail and version control</li>
+            <li>Integrates with SAP and other ERP systems for orders and WIP</li>
+            <li>Standard industrial connectivity via OPC UA, MQTT and Modbus</li>
+            <li>Multi-plant rollouts with per-site configuration</li>
+            <li>Mobile and tablet-ready dashboards for supervisors</li>
+          </ul>
+        </div>
+        <div class="split__media" data-reveal="right">
+          <div class="table-wrap">
+            <table class="table">
+              <caption class="sr-only">Comparison of MAPP deployment models</caption>
+              <thead><tr><th scope="col">Consideration</th><th scope="col">On-premise</th><th scope="col">Cloud</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Data residency</strong></td><td>Inside plant network</td><td>Hosted, region-selectable</td></tr>
+                <tr><td><strong>Best for</strong></td><td>Single site, strict IT policy</td><td>Multi-site, group reporting</td></tr>
+                <tr><td><strong>Access</strong></td><td>Plant LAN / VPN</td><td>Any authorised browser</td></tr>
+                <tr><td><strong>Scaling</strong></td><td>Sized at project start</td><td>Elastic per site added</td></tr>
+                <tr><td><strong>Maintenance</strong></td><td>AMC with KNEO</td><td>Managed by KNEO</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="section" id="outcomes">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow" data-reveal="fade">Outcomes</span>
+        <h2 data-reveal>What changes after go-live.</h2>
+      </div>
+      <div class="cardgrid cardgrid--4" data-reveal-group=".07">
+        <div class="cell" data-reveal><h3 class="h4">Real-time visibility</h3><p>Shift, line, machine and operator performance visible as it happens — not reconstructed a month later.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Reduced downtime</h3><p>Live alerts for stoppages, losses and deviations, with reason codes that make root-cause analysis possible.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Higher productivity</h3><p>Bottleneck identification with time-stamped loss analysis, so improvement effort goes where it pays.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Smarter decisions</h3><p>AI-driven performance analytics and trend forecasting supporting operational decisions at every level.</p></div>
+      </div>
+
+      <div class="grid grid-2 gap-md mt-4" data-reveal-group=".08">
+        <a class="card card--hover" href="{{BASE}}products.html" data-reveal>
+          <span class="cell__tag">Related</span>
+          <h3 class="h4">Standalone Quality 4.0 products</h3>
+          <p>Auto Ballooning, Drawing Inspection Workflow, PFMEA Software and MAPP Vision — deployable independently or inside MAPP ZEN.</p>
+          <span class="link mt-2">View products <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="card card--hover" href="{{BASE}}services/ignition-scada.html" data-reveal>
+          <span class="cell__tag">Related</span>
+          <h3 class="h4">Ignition SCADA solutions</h3>
+          <p>Where a SCADA-layer implementation fits better than a full MES, we build on Ignition Perspective and Vision with OPC UA integration.</p>
+          <span class="link mt-2">Explore Ignition SCADA <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{INCLUDE:solve-compact}}
+
+  <section class="cta-band cta-band--accent">
+    <div class="bg-grid bg-grid--full" aria-hidden="true" style="--grid-line:rgba(255,255,255,.09)"></div>
+    <div class="container"><div class="cta-band__inner">
+      <span class="eyebrow" data-reveal="fade">See it on your data</span>
+      <h2 data-reveal>Turn your factory data into actionable intelligence.</h2>
+      <p data-reveal style="--reveal-delay:.1s">Book a working session with our platform engineers. We will map your machines, protocols and reporting needs before quoting anything.</p>
+      <div class="btn-row btn-row--center" data-reveal style="--reveal-delay:.2s">
+        <a class="btn btn--invert btn--lg" href="{{BASE}}contact.html?req=mapp">Request a Demo
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div></div>
+  </section>
+
+</main>

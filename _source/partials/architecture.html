@@ -1,0 +1,175 @@
+      <!-- ============================================================
+           MAPP architecture — RADIAL layout. Home page only.
+           The MAPP page pulls in architecture-classic.html instead, and
+           the two are meant to differ. The page supplies its own heading
+           above this block, so there is none here.
+
+           TWO GEOMETRIES, ONE DIAGRAM.
+           A radial diagram has a fixed aspect ratio, so a single SVG
+           cannot both fill a desktop and stay legible on a phone — at
+           360px the landscape version renders its labels at about 5px.
+           The reference this came from solved that with a sideways
+           scroll and a "swipe" hint; this does not, because the diagram
+           is meant to fit. Instead there are two SVGs and a media query
+           picks one:
+
+             .radial__wide   landscape, full ring    >= 1024px
+             .radial__tall   portrait, stacked ring   < 1024px  (capped
+                             at 460px wide so it cannot balloon on a tablet)
+
+           display:none removes the unused one from the accessibility
+           tree as well as from the page, so screen readers get exactly
+           one. Both carry the same six module links.
+
+           GEOMETRY — recompute if you move anything.
+           wide: viewBox 1160x890, core (580,430) r88, ring r300.
+           tall: viewBox  380x900, core (190,470) r62, ring r148,
+                 modules every 60 degrees, boxes 104x38 centred on the
+                 ring, so the outermost edge lands at x=370.2 inside a
+                 380 box — a 9.8 margin on each side.
+           ============================================================ -->
+      <div class="radial" data-reveal="fade">
+
+        <!-- ---------------- Landscape ---------------- -->
+        <svg class="radial__svg radial__wide" viewBox="0 0 1160 890"
+             role="img" aria-labelledby="archRTitle archRDesc" focusable="false">
+          <title id="archRTitle">MAPP platform architecture</title>
+          <desc id="archRDesc">The MAPP core sits at the centre, ringed by its six modules. Shop floor equipment on the lower arc streams telemetry inward; enterprise systems on the upper arc receive context back out.</desc>
+
+          <text class="radial__cap" x="24" y="28">Enterprise systems</text>
+          <text class="radial__cap" x="24" y="874">Shop floor &mdash; machines, cells &amp; lines</text>
+
+          <circle class="radial__ring" cx="580" cy="430" r="300"/>
+          <circle class="radial__ring-run" cx="580" cy="430" r="300"/>
+
+          <path class="radial__wire" d="M248 563L298 533M356 720L408 676M580 791L580 730M804 720L752 676M912 563L862 533"/>
+          <path class="radial__wire" d="M298 327L248 297M408 184L356 140M580 130L580 69M752 184L804 140M862 327L912 297"/>
+          <path class="radial__wire" d="M580 130L580 210M580 260L580 342M840 280L771 320M727 345L656 386M840 580L771 540M727 515L656 474M580 730L580 650M580 600L580 518M320 580L389 540M433 515L504 474M320 280L389 320M433 345L504 386"/>
+
+          <!-- telemetry travelling inward -->
+          <path class="radial__in" d="M248 563L298 533"/>
+          <path class="radial__in" d="M356 720L408 676"/>
+          <path class="radial__in" d="M580 791L580 730"/>
+          <path class="radial__in" d="M804 720L752 676"/>
+          <path class="radial__in" d="M912 563L862 533"/>
+          <path class="radial__in" d="M840 580L771 540"/>
+          <path class="radial__in" d="M727 515L656 474"/>
+          <path class="radial__in" d="M580 730L580 650"/>
+          <path class="radial__in" d="M580 600L580 518"/>
+          <path class="radial__in" d="M320 580L389 540"/>
+          <path class="radial__in" d="M433 515L504 474"/>
+
+          <!-- context travelling back out -->
+          <path class="radial__out" d="M580 342L580 260"/>
+          <path class="radial__out" d="M580 210L580 130"/>
+          <path class="radial__out" d="M656 386L727 345"/>
+          <path class="radial__out" d="M771 320L840 280"/>
+          <path class="radial__out" d="M504 386L433 345"/>
+          <path class="radial__out" d="M389 320L320 280"/>
+          <path class="radial__out" d="M298 327L248 297"/>
+          <path class="radial__out" d="M408 184L356 140"/>
+          <path class="radial__out" d="M580 130L580 69"/>
+          <path class="radial__out" d="M752 184L804 140"/>
+          <path class="radial__out" d="M862 327L912 297"/>
+
+          <g class="radial__packets">
+            <circle class="radial__pk radial__pk--in" r="5"><animateMotion dur="3.4s" begin="0s" repeatCount="indefinite" path="M580 791L580 730"/></circle>
+            <circle class="radial__pk radial__pk--in" r="5" opacity="0"><set attributeName="opacity" to="1" begin="1.1s" fill="freeze"/><animateMotion dur="3.4s" begin="1.1s" repeatCount="indefinite" path="M248 563L298 533"/></circle>
+            <circle class="radial__pk radial__pk--in" r="5" opacity="0"><set attributeName="opacity" to="1" begin="1.9s" fill="freeze"/><animateMotion dur="3.4s" begin="1.9s" repeatCount="indefinite" path="M912 563L862 533"/></circle>
+            <circle class="radial__pk radial__pk--in" r="5" opacity="0"><set attributeName="opacity" to="1" begin="2.7s" fill="freeze"/><animateMotion dur="3.4s" begin="2.7s" repeatCount="indefinite" path="M356 720L408 676"/></circle>
+            <circle class="radial__pk radial__pk--out" r="5" opacity="0"><set attributeName="opacity" to="1" begin="0.6s" fill="freeze"/><animateMotion dur="4s" begin="0.6s" repeatCount="indefinite" path="M580 130L580 69"/></circle>
+            <circle class="radial__pk radial__pk--out" r="5" opacity="0"><set attributeName="opacity" to="1" begin="2.2s" fill="freeze"/><animateMotion dur="4s" begin="2.2s" repeatCount="indefinite" path="M862 327L912 297"/></circle>
+            <circle class="radial__pk radial__pk--out" r="5" opacity="0"><set attributeName="opacity" to="1" begin="3.3s" fill="freeze"/><animateMotion dur="4s" begin="3.3s" repeatCount="indefinite" path="M298 327L248 297"/></circle>
+          </g>
+
+          <g class="radial__node"><rect class="radial__chipbx" x="185" y="410" width="190" height="40" rx="20"/><text class="radial__chip" x="280" y="435" text-anchor="middle">Field protocols</text></g>
+          <g class="radial__node"><rect class="radial__chipbx" x="785" y="410" width="190" height="40" rx="20"/><text class="radial__chip" x="880" y="435" text-anchor="middle">Enterprise APIs</text></g>
+
+          <a class="radial__node" href="{{BASE}}mapp/mapp-eye.html"><rect class="radial__modbx" x="514" y="208" width="132" height="54" rx="10"/><text class="radial__mname" x="580" y="232" text-anchor="middle">Eye</text><text class="radial__msub" x="580" y="250" text-anchor="middle">OEE</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-zen.html"><rect class="radial__modbx" x="683" y="305" width="132" height="54" rx="10"/><text class="radial__mname" x="749" y="329" text-anchor="middle">Zen</text><text class="radial__msub" x="749" y="347" text-anchor="middle">Quality</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-trail.html"><rect class="radial__modbx" x="683" y="501" width="132" height="54" rx="10"/><text class="radial__mname" x="749" y="525" text-anchor="middle">Trail</text><text class="radial__msub" x="749" y="543" text-anchor="middle">Traceability</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-vita.html"><rect class="radial__modbx" x="514" y="598" width="132" height="54" rx="10"/><text class="radial__mname" x="580" y="622" text-anchor="middle">Vita</text><text class="radial__msub" x="580" y="640" text-anchor="middle">Maintenance</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-adept.html"><rect class="radial__modbx" x="345" y="501" width="132" height="54" rx="10"/><text class="radial__mname" x="411" y="525" text-anchor="middle">Adept</text><text class="radial__msub" x="411" y="543" text-anchor="middle">Scheduling</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-sprint.html"><rect class="radial__modbx" x="345" y="305" width="132" height="54" rx="10"/><text class="radial__mname" x="411" y="329" text-anchor="middle">Sprint</text><text class="radial__msub" x="411" y="347" text-anchor="middle">Supply</text></a>
+
+          <circle class="radial__core" cx="580" cy="430" r="88"/>
+          <text class="radial__core-name" x="580" y="424" text-anchor="middle">MAPP</text>
+          <text class="radial__core-sub"  x="580" y="448" text-anchor="middle">MES / IIoT</text>
+          <text class="radial__core-sub"  x="580" y="466" text-anchor="middle">On-prem or cloud</text>
+
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="88" y="268" width="160" height="58" rx="8"/><text class="radial__name" x="168" y="303" text-anchor="middle">ERP / SAP</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="276" y="82"  width="160" height="58" rx="8"/><text class="radial__name" x="356" y="117" text-anchor="middle">BI &amp; reporting</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="500" y="11"  width="160" height="58" rx="8"/><text class="radial__name" x="580" y="46"  text-anchor="middle">Planning</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="724" y="82"  width="160" height="58" rx="8"/><text class="radial__name" x="804" y="117" text-anchor="middle">Quality dept</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="912" y="268" width="160" height="58" rx="8"/><text class="radial__name" x="992" y="303" text-anchor="middle">Management</text></g>
+
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="88" y="534" width="160" height="58" rx="8"/><text class="radial__name" x="168" y="569" text-anchor="middle">PLC / PAC</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="276" y="720" width="160" height="58" rx="8"/><text class="radial__name" x="356" y="755" text-anchor="middle">Robot cells</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="500" y="791" width="160" height="58" rx="8"/><text class="radial__name" x="580" y="826" text-anchor="middle">Sensors / IO</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="724" y="720" width="160" height="58" rx="8"/><text class="radial__name" x="804" y="755" text-anchor="middle">Vision systems</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="912" y="534" width="160" height="58" rx="8"/><text class="radial__name" x="992" y="569" text-anchor="middle">Drives / energy</text></g>
+        </svg>
+
+        <!-- ---------------- Portrait ---------------- -->
+        <svg class="radial__svg radial__tall" viewBox="0 0 380 900"
+             role="img" aria-labelledby="archRTitleM archRDescM" focusable="false">
+          <title id="archRTitleM">MAPP platform architecture</title>
+          <desc id="archRDescM">The MAPP core sits at the centre, ringed by its six modules. Shop floor equipment below streams telemetry up into it; enterprise systems above receive context back out.</desc>
+
+          <text class="radial__cap" x="10" y="24">Enterprise systems</text>
+          <text class="radial__cap" x="10" y="886">Shop floor &mdash; machines, cells &amp; lines</text>
+
+          <circle class="radial__ring" cx="190" cy="470" r="148"/>
+          <circle class="radial__ring-run" cx="190" cy="470" r="148"/>
+
+          <!-- Trunks are drawn before the chips so the chips mask them. -->
+          <path class="radial__wire" d="M190 300L190 202M190 700L190 637"/>
+          <path class="radial__out" d="M190 300L190 202"/>
+          <path class="radial__in"  d="M190 700L190 637"/>
+
+          <!-- Spokes from the core; the module boxes cover their far ends. -->
+          <path class="radial__wire" d="M190 402L190 338M248.89 436L304.31 404M248.89 504L304.31 536M190 538L190 602M131.11 504L75.69 536M131.11 436L75.69 404"/>
+
+          <g class="radial__packets">
+            <circle class="radial__pk radial__pk--in"  r="5"><animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" path="M190 700L190 637"/></circle>
+            <circle class="radial__pk radial__pk--out" r="5" opacity="0"><set attributeName="opacity" to="1" begin="1.4s" fill="freeze"/><animateMotion dur="3.6s" begin="1.4s" repeatCount="indefinite" path="M190 300L190 202"/></circle>
+          </g>
+
+          <g class="radial__node"><rect class="radial__chipbx" x="115" y="238" width="150" height="26" rx="13"/><text class="radial__chip" x="190" y="255" text-anchor="middle">Enterprise APIs</text></g>
+          <g class="radial__node"><rect class="radial__chipbx" x="115" y="656" width="150" height="26" rx="13"/><text class="radial__chip" x="190" y="673" text-anchor="middle">Field protocols</text></g>
+
+          <a class="radial__node" href="{{BASE}}mapp/mapp-eye.html"><rect class="radial__modbx" x="138" y="303" width="104" height="38" rx="9"/><text class="radial__mname" x="190" y="320" text-anchor="middle">Eye</text><text class="radial__msub" x="190" y="334" text-anchor="middle">OEE</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-zen.html"><rect class="radial__modbx" x="266.17" y="377" width="104" height="38" rx="9"/><text class="radial__mname" x="318.17" y="394" text-anchor="middle">Zen</text><text class="radial__msub" x="318.17" y="408" text-anchor="middle">Quality</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-trail.html"><rect class="radial__modbx" x="266.17" y="525" width="104" height="38" rx="9"/><text class="radial__mname" x="318.17" y="542" text-anchor="middle">Trail</text><text class="radial__msub" x="318.17" y="556" text-anchor="middle">Traceability</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-vita.html"><rect class="radial__modbx" x="138" y="599" width="104" height="38" rx="9"/><text class="radial__mname" x="190" y="616" text-anchor="middle">Vita</text><text class="radial__msub" x="190" y="630" text-anchor="middle">Maintenance</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-adept.html"><rect class="radial__modbx" x="9.83" y="525" width="104" height="38" rx="9"/><text class="radial__mname" x="61.83" y="542" text-anchor="middle">Adept</text><text class="radial__msub" x="61.83" y="556" text-anchor="middle">Scheduling</text></a>
+          <a class="radial__node" href="{{BASE}}mapp/mapp-sprint.html"><rect class="radial__modbx" x="9.83" y="377" width="104" height="38" rx="9"/><text class="radial__mname" x="61.83" y="394" text-anchor="middle">Sprint</text><text class="radial__msub" x="61.83" y="408" text-anchor="middle">Supply</text></a>
+
+          <circle class="radial__core" cx="190" cy="470" r="62"/>
+          <text class="radial__core-name" x="190" y="464" text-anchor="middle">MAPP</text>
+          <text class="radial__core-sub"  x="190" y="482" text-anchor="middle">MES / IIoT</text>
+
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="10"  y="40"  width="168" height="46" rx="8"/><text class="radial__name" x="94"  y="68"  text-anchor="middle">ERP / SAP</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="202" y="40"  width="168" height="46" rx="8"/><text class="radial__name" x="286" y="68"  text-anchor="middle">BI &amp; reporting</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="10"  y="98"  width="168" height="46" rx="8"/><text class="radial__name" x="94"  y="126" text-anchor="middle">Planning</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="202" y="98"  width="168" height="46" rx="8"/><text class="radial__name" x="286" y="126" text-anchor="middle">Quality dept</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--ent" x="106" y="156" width="168" height="46" rx="8"/><text class="radial__name" x="190" y="184" text-anchor="middle">Management</text></g>
+
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="10"  y="700" width="168" height="46" rx="8"/><text class="radial__name" x="94"  y="728" text-anchor="middle">PLC / PAC</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="202" y="700" width="168" height="46" rx="8"/><text class="radial__name" x="286" y="728" text-anchor="middle">Robot cells</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="10"  y="758" width="168" height="46" rx="8"/><text class="radial__name" x="94"  y="786" text-anchor="middle">Sensors / IO</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="202" y="758" width="168" height="46" rx="8"/><text class="radial__name" x="286" y="786" text-anchor="middle">Vision systems</text></g>
+          <g class="radial__node"><rect class="radial__bx radial__bx--floor" x="106" y="816" width="168" height="46" rx="8"/><text class="radial__name" x="190" y="844" text-anchor="middle">Drives / energy</text></g>
+        </svg>
+
+        <p class="radial__legend">
+          <span class="radial__key radial__key--in">Telemetry in</span>
+          <span class="radial__key radial__key--out">Context out</span>
+          <code class="radial__proto">OPC UA</code>
+          <code class="radial__proto">MQTT</code>
+          <code class="radial__proto">Modbus TCP</code>
+          <code class="radial__proto">PROFINET</code>
+          <code class="radial__proto">EtherNet/IP</code>
+        </p>
+
+      </div>

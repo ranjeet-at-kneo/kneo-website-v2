@@ -1,0 +1,85 @@
+  <!-- ==================== PFMEA INTERACTIVE DEMO ====================
+       AIAG-VDA seven-step analysis as a mind map with action-priority
+       heat maps. Sample project is illustrative and labelled as such.
+       Behaviour lives in initPfmea(). -->
+  <section class="pv section" id="pfmea-demo" aria-labelledby="pv-heading">
+    <!-- The site container, so the section lines up with every other one
+         on the page instead of running edge to edge. -->
+    <div class="container">
+      <div class="pv-head">
+        <div>
+          <p class="kicker">PFMEA Software · AIAG-VDA</p>
+          <h2 id="pv-heading">Visualize. Prioritize. <span>Control.</span></h2>
+        </div>
+        <p>Built to the AIAG-VDA seven-step approach. Import processes from your PFD, build the analysis as a mind map, prioritise with action-priority heat maps and export in standard Excel formats.</p>
+      </div>
+
+      <div class="rail" id="pv-rail" aria-label="AIAG-VDA seven-step approach"></div>
+      <div class="groups" aria-hidden="true"><div>System analysis</div><div>Failure &amp; risk analysis</div><div>Communication</div></div>
+
+      <div class="modes-row">
+        <p class="modes-hint" id="pv-modesHint">Watching the demo — click anywhere in the analysis to take over.</p>
+        <div class="mode" role="group" aria-label="Demo mode">
+          <button type="button" id="pv-modeAuto" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2l9 5-9 5z" fill="currentColor"/></svg>Watch demo</button>
+          <button type="button" id="pv-modeTry" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 2l8 4-3.5 1.2L6 11z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Try it yourself</button>
+        </div>
+      </div>
+
+      <div class="app" id="pv-app">
+        <div class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>PFMEA</b><span class="sub">· Bearing housing line</span>
+          <span class="sample">Illustrative sample project</span>
+          <a class="ctl ctl--pv-export" id="pv-exportBtn" href="{{BASE}}contact.html">Export Excel</a>
+        </div>
+        <div class="status" role="status"><span class="live" aria-hidden="true"></span><span class="phase" id="pv-phase">Step 1</span><span class="msg" id="pv-msg">Planning &amp; preparation</span></div>
+
+        <div class="app-body">
+          <div class="work">
+            <div class="canvas-area">
+              <div class="tools" id="pv-tools" role="toolbar" aria-label="Mind map tools" hidden>
+                <label class="sr" for="pv-addType">Node type to add</label>
+                <select id="pv-addType"></select>
+                <button type="button" id="pv-tAdd">+ Add node</button>
+                <button type="button" id="pv-tChild" disabled>+ Add child</button>
+                <button type="button" id="pv-tDel" disabled>Delete</button>
+                <span class="tsep" aria-hidden="true"></span>
+                <button type="button" id="pv-tLayout">Auto-layout</button>
+                <button type="button" id="pv-tUndo" disabled>Undo</button>
+                <button type="button" id="pv-tReset">Reset</button>
+                <span class="thint">Drag nodes · drag from ● to connect · double-click to rename</span>
+              </div>
+              <div class="mm-scroll" id="pv-mmScroll"><div class="mm-wrap" id="pv-mmWrap"><div class="mm" id="pv-mm"><svg id="pv-wires" viewBox="0 0 1080 370" aria-hidden="true"></svg></div></div></div>
+            </div>
+            <aside class="editor" id="pv-editor" hidden aria-label="Properties"></aside>
+          </div>
+
+          <div class="hms">
+            <div class="hm">
+              <div class="hm-title">Initial Risk Assessment <small id="pv-initCount"></small></div>
+              <div class="hm-x">Occurrence</div>
+              <div class="hm-body"><div class="hm-y">Severity</div><div class="hm-rows" id="pv-rowsA"></div><div><div class="hm-cols" id="pv-colsA"></div><div class="pvgrid" id="pv-gridA"></div></div></div>
+            </div>
+            <div class="hm">
+              <div class="hm-title">After Optimization <small id="pv-afterCount"></small></div>
+              <div class="hm-x">Occurrence</div>
+              <div class="hm-body"><div class="hm-y">Severity</div><div class="hm-rows" id="pv-rowsB"></div><div><div class="hm-cols" id="pv-colsB"></div><div class="pvgrid" id="pv-gridB"></div></div></div>
+              <div class="legend"><span><i style="background:var(--pv-hm-r2)"></i>High</span><span><i style="background:var(--pv-hm-y2)"></i>Medium</span><span><i style="background:var(--pv-hm-g2)"></i>Low</span></div>
+            </div>
+          </div>
+
+          <div class="toast" id="pv-toast" hidden><i>X</i><div>PFMEA_Bearing-housing.xlsx<small>Exported in standard AIAG-VDA Excel format</small></div></div>
+        </div>
+      </div>
+
+      <div class="feats">
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h6v5H4zM14 13h6v5h-6zM10 8.5h2a2 2 0 012 2v5"/></svg></span><div><strong>Linked to PFD &amp; plan</strong><span>Linkages to the PFD and manufacturing plan; processes imported directly.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 12h4l6-6M11 12l6 6"/></svg></span><div><strong>Mind map analysis</strong><span>Functional, failure and risk analysis as one connected map.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><div><strong>Edit nodes seamlessly</strong><span>Add, modify and delete nodes without breaking the structure.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="8" height="6" rx="1.5"/><rect x="13" y="14" width="8" height="6" rx="1.5"/></svg></span><div><strong>Colour-coded nodes</strong><span>Read risk visually — every node type has its own colour.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span><div><strong>AP heat maps</strong><span>Optimise using action-priority heat maps, before and after.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span><div><strong>Process master templates</strong><span>Create process details instantly from master templates.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg></span><div><strong>Excel preview &amp; export</strong><span>Preview and export in standard Excel formats.</span></div></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg></span><div><strong>As per AIAG-VDA</strong><span>Follows the AIAG-VDA seven-step approach end to end.</span></div></div>
+      </div>
+    </div>
+  </section>

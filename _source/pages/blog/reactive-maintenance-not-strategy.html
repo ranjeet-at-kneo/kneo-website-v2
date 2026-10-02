@@ -1,0 +1,73 @@
+@TITLE Reactive Maintenance Is Not a Maintenance Strategy
+@DESC There is a version of the reactive maintenance argument that sounds reasonable: if the machine is running, why spend money maintaining it? Wait until…
+@NAV company
+@OUT blog/reactive-maintenance-not-strategy.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><a href="{{BASE}}insights.html">Insights</a><span class="sep">/</span><span aria-current="page">Reactive Maintenance Is Not a Strategy. It Is What Happens When You Do Not Have One.</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">Predictive Maintenance</span>
+        <h1 data-reveal>Reactive Maintenance Is Not a Strategy. It Is What Happens When You Do Not Have One.</h1>
+        <p class="article-meta" data-reveal style="--reveal-delay:.12s">
+          <time datetime="2026-06-19">19 June 2026</time><span class="dot"></span><span>3 min read</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--narrow">
+
+      <img class="article-hero" src="{{BASE}}assets/img/insights/wide/reactive-maintenance-not-strategy.jpg"
+           alt="" width="1200" height="675" fetchpriority="high" decoding="async" data-reveal="fade">
+
+      <div class="prose" data-reveal="fade" style="--reveal-delay:.1s">
+          <p>There is a version of the reactive maintenance argument that sounds reasonable: if the machine is running, why spend money maintaining it? Wait until something breaks, then fix it. The logic holds until the thing that breaks costs twenty times the maintenance you avoided.</p>
+          <h2>Why Reactive Mode Persists</h2>
+          <p>Reactive maintenance has structural advantages that are easy to underestimate. It requires no data infrastructure. It requires no parameter baselining. It requires no training in trend interpretation. You run the machine until it fails, and then you fix it. In environments where the cost of failure is low and the cost of planned maintenance is high relative to that, this is not an irrational approach. The problem is that most manufacturing environments do not meet those conditions. Bearing failure in a CNC spindle does not cost the price of a bearing. It costs the price of the spindle, plus the machined surface finish on every part run while the bearing was deteriorating, plus the emergency repair callout at weekend rates, plus the unplanned production stoppage. The bearing replacement that was avoided cost a fraction of all of that.</p>
+          <h2>What Condition-Based Monitoring Changes</h2>
+          <p>The transition from reactive to condition-based maintenance requires exactly one thing: the ability to read what the machine is telling you before it stops telling you anything. Hydraulic pressure trending outside its normal operating band. Spindle current rising gradually across three weeks. Vibration amplitude increasing at a specific frequency. These are not alarms. They are signals. A plant running a maintenance monitoring platform was alerted to anomalous hydraulic pressure readings on a CNC machine that was still operating normally by every conventional measure. Investigation found a seal beginning to fail. Two-hour repair during a planned window. The alternative was a full hydraulic system failure, likely mid-shift, with attendant production loss and emergency response costs.</p>
+          <h2>The Tool and Mold Maintenance Problem</h2>
+          <p>Machine health is one dimension of industrial maintenance. Tool and mold health is another, and for precision manufacturers it is often the more financially significant one. A high-quality mold represents a substantial capital investment. Its rated life - expressed in shots or cycles - is an engineering estimate based on standard conditions. In practice, the same mold running different materials, on different machines, under different process conditions will degrade at different rates. A mold at 70% of its rated cycle count that is showing early surface finish degradation needs intervention now. A mold at 110% of its rated count that is still producing parts within specification can keep running. Condition-based tool monitoring replaces the theoretical life schedule with the actual one.</p>
+          <h2>The Cultural Shift Is Harder Than the Technology</h2>
+          <p>The technology for predictive maintenance is mature, proven, and accessible. The harder work is the cultural transition it requires. Maintenance teams conditioned to respond to failures need to learn to interpret trends. Supervisors accustomed to judging maintenance effectiveness by how quickly problems get fixed need to start judging it by how rarely problems occur. Plant managers need to understand that a maintenance team with a low emergency callout rate is not underworked - they are doing their job correctly. This is a change in how the function thinks about itself, and it does not happen automatically when the monitoring software goes live.</p>
+          <blockquote>
+          <p>The shift from reactive to predictive maintenance is not a capital investment. It is a decision about how you want to manage risk. <a href="{{BASE}}">KNEO Automation</a>
+          </p>
+          </blockquote>
+      </div>
+
+      <div class="article-foot" data-reveal="fade">
+        <a class="link" href="{{BASE}}insights.html">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12 6 8l4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to all insights</a>
+        <a class="btn btn--primary" href="{{BASE}}contact.html">Talk to our team
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Article structured data. Publisher/date come from the live post, so they
+       stay accurate; nothing here is asserted that the article does not state. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Reactive Maintenance Is Not a Strategy. It Is What Happens When You Do Not Have One.",
+    "datePublished": "2026-06-19",
+    "articleSection": "Predictive Maintenance",
+    "image": "{{SITE}}/assets/img/insights/wide/reactive-maintenance-not-strategy.jpg",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{SITE}}/blog/reactive-maintenance-not-strategy/" },
+    "publisher": { "@type": "Organization", "name": "KNEO Automation Pvt. Ltd." }
+  }
+  </script>
+
+</main>

@@ -1,0 +1,160 @@
+
+KNEO AUTOMATION
+Vercel Website Improvement Plan
+Revalidation of kneo-website.vercel.app • 26 September 2026
+Current assessmentOverall: 8.8/10. The site is substantially improved. Do not redesign it again; focus on proof, claim verification, product hierarchy, conversion, SEO and technical QA.
+
+1. What Is Already Strong
+MAPP now has a clear six-module architecture and explicit on-premise/cloud deployment.
+The homepage has problem-based navigation: automation, controls, retrofit, visibility, throughput, quality, traceability, maintenance, inspection and scheduling.
+The Products page has a strong connected-quality story and a low-friction drawing-demo CTA.
+The Services page clearly covers eight engineering services under one accountable team.
+The homepage has a defined six-step delivery methodology from discovery through support.
+The site now communicates Industrial Automation + Digital Manufacturing + Digital Quality as one business story.
+2. Highest-Priority Improvements
+Priority
+Area
+What to improve
+How to improve
+When
+P0
+Claims
+23+ years, 30+ countries, 400+ projects, 8+ years Industry 4.0, ISO/OEM claims
+Create an internal evidence/approval register; publish only claims that can be supported.
+Before launch
+P0
+Experience
+23 Years appears while site says since 2003
+Standardise on “Engineering Since 2003” and remove dynamic year counters.
+Before launch
+P0
+Logos/OEM
+Large customer/OEM list carries high credibility risk
+Verify each relationship and describe it accurately.
+Before launch
+P0
+Forms
+Contact/demo forms are revenue-critical
+Test submission, routing, confirmation, spam and mobile end-to-end.
+Before launch
+P1
+Product hierarchy
+Many MAPP modules + standalone products can confuse buyers
+Group as Automation Engineering / Manufacturing Intelligence / Digital Quality.
+0–30 days
+P1
+Offshore engineering
+Scalable teams are mentioned but offer is not prominent enough
+Create an explicit Offshore Engineering page/section with PLC, EPLAN, SCADA, robotics and simulation.
+0–30 days
+P1
+Case studies
+Capability is stronger than visible proof
+Publish 4–6 documented case studies with photos, technology and results.
+0–60 days
+P1
+Auto Ballooning
+Strong product but needs stronger visual proof
+Show original drawing → ballooned drawing → characteristic table and a drawing-demo CTA.
+0–30 days
+P1
+SEO
+Need more commercial search-intent coverage
+Create dedicated pages for PLC, EPLAN, Ignition, virtual commissioning, offshore engineering, Auto Ballooning, PFMEA, OEE and MES.
+0–90 days
+P2
+Homepage
+Long and information-dense
+Keep content but improve visual hierarchy, whitespace, sticky CTA and proof placement.
+0–60 days
+P2
+MAPP architecture
+Good text, but can be understood faster visually
+Create one polished plant architecture diagram.
+0–30 days
+3. Detailed Improvement Actions
+3.1 Homepage
+Keep the current hero and problem selector. Change the primary CTA to “Talk to an Engineer” or “Discuss Your Automation Requirement.” Add a verified proof strip, one authentic project image, and a sticky mobile CTA. Do not add more generic copy.
+3.2 MAPP
+Rename navigation from “MES Platform” to “MAPP Platform” or “MAPP — IIoT & MES.” Add a module-selection matrix showing problem, module, user, inputs and outputs. Add Connect → Configure → Validate → Go Live → Improve implementation steps.
+3.3 Product hierarchy
+Present the portfolio as: 01 Automation Engineering — PLC/SCADA/Robotics/Electrical/Commissioning; 02 Manufacturing Intelligence — EYE/TRAIL/VITA/ADEPT/SPRINT; 03 Digital Quality — ZEN/Auto Ballooning/PFMEA/PFD/Control Plan/Inspection/Vision.
+3.4 Auto Ballooning
+Make this a flagship lead generator. Add before/after visual, drawing upload workflow, on-premise/privacy explanation if supported, FAQ, benchmarked results only, and “Send One Drawing for a Demo.”
+3.5 Offshore engineering
+Create “Offshore Industrial Automation Engineering Services.” Offer PLC, HMI/SCADA, EPLAN, electrical documentation, robotics, simulation, virtual commissioning and technical documentation. Explain project-based, dedicated-team, overflow and hybrid models.
+3.6 Case studies
+Create at least four: automotive automation, SCADA/MES/OEE, digital quality/Auto Ballooning, retrofit/virtual commissioning. Format: challenge → scope → technology → implementation → result → evidence → CTA.
+3.7 Trust
+Verify all numbers, certifications, OEM standards, customer logos, 24/7 support and geographic claims. Maintain a private claim register with evidence, date and approval owner.
+3.8 SEO
+Build high-intent pages: Siemens PLC Programming, Rockwell PLC Programming, Ignition SCADA Development, EPLAN Engineering, Virtual Commissioning, Offshore PLC Engineering, Offshore EPLAN, Auto Ballooning Software, PFMEA Software, OEE/MAPP EYE and MES/MAPP.
+3.9 UX
+Keep the existing visual direction. Improve scannability with diagrams, screenshots, authentic project photos, consistent CTAs, mobile sticky CTA and reduced text density.
+4. Recommended SEO Landing-Page Map
+Cluster
+Pages
+CTA
+PLC/Controls
+Siemens PLC Programming; Rockwell PLC Programming; Beckhoff PLC Engineering
+Discuss PLC Project
+SCADA
+Ignition SCADA Development; Industrial SCADA Integration; OEE SCADA
+Talk to SCADA Engineer
+Electrical
+EPLAN Electrical Engineering; Control Panel Design; Industrial Electrical Engineering
+Request Engineering Support
+Simulation
+Virtual Commissioning; Digital Twin for Automation
+Discuss Simulation
+Offshore
+Offshore PLC Engineering; Offshore EPLAN Engineering; Automation Outsourcing
+Build an Engineering Team
+Digital Manufacturing
+MES Software; IIoT Platform; OEE Monitoring; Track & Trace
+Request MAPP Demo
+Digital Quality
+Auto Ballooning; PFMEA Software; Digital Inspection; Control Plan Software
+Request Product Demo
+5. Pre-Launch Technical Checklist
+☐ Contact, demo and product enquiry forms submit successfully.
+☐ Email routing, confirmation and spam protection work.
+☐ Analytics tracks page views and primary CTA conversions.
+☐ Sitemap.xml, robots.txt and canonical URLs are correct.
+☐ Every indexable page has unique title and meta description.
+☐ Open Graph previews are correct.
+☐ 404 page and redirects work.
+☐ Mobile navigation/forms/CTAs work.
+☐ Images/video are optimised and performance is acceptable.
+☐ Accessibility: contrast, keyboard navigation, labels and alt text.
+☐ No placeholder/test content remains.
+☐ All logos, OEM references, certifications and product claims are approved.
+☐ Privacy Policy and Terms are complete.
+☐ Domain/HTTPS/DNS are checked before production cutover.
+6. 30 / 60 / 90 Day Roadmap
+Days 0–30 — Launch Quality
+Fix experience wording.
+Verify all claims/logos/OEM references.
+Test forms and analytics.
+Rename MES Platform to MAPP Platform.
+Add MAPP architecture graphic.
+Improve Auto Ballooning demo CTA.
+Prepare offshore engineering landing page.
+Days 31–60 — Proof & SEO
+Publish four case studies.
+Publish PLC/SCADA/EPLAN/offshore pages.
+Add product screenshots/demo videos.
+Add FAQs.
+Connect products ↔ services ↔ industries ↔ case studies.
+Days 61–90 — Scale
+Expand pages based on search data.
+Publish technical guides/checklists.
+Test CTA wording/form length.
+Create more industry case studies.
+Review conversion data monthly.
+7. Final Recommendation
+DecisionProceed toward production after P0 verification and technical QA. Do not invest in another major visual redesign. The next cycle should turn the website from a strong capability brochure into a measurable lead-generation platform.
+Target state: visitors understand KNEO in 10 seconds; technical buyers find the right service/product quickly; machine builders understand offshore engineering; quality engineers can request a drawing/product demo easily; plant managers understand MAPP architecture quickly; and every credibility claim has supporting evidence.
+Appendix — Current Vercel Build Evidence
+Revalidated against the exact URL supplied by the user: https://kneo-website.vercel.app/. The current homepage confirms the MAPP six-module structure, products, eight services, six industries, company metrics, OEM-standard section, delivery methodology and contact information. The MAPP page confirms modular/on-premise/cloud positioning; Products confirms four digital-quality products and the drawing-demo CTA; Services confirms the eight service categories.
+Revalidation date: 26 September 2026

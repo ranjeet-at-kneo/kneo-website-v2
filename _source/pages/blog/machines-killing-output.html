@@ -1,0 +1,73 @@
+@TITLE 360 Machines, and No Idea Which 30 Killed Output
+@DESC 360 machines. 200,000 finished variants. The plant was operating at full capacity - or so the spreadsheet said. The question nobody had actually answered…
+@NAV company
+@OUT blog/machines-killing-output.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><a href="{{BASE}}insights.html">Insights</a><span class="sep">/</span><span aria-current="page">A Tier-1 Manufacturer Had 360 Machines and No Idea Which 30 Were Killing Their Output</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">OEE &amp; Visibility</span>
+        <h1 data-reveal>A Tier-1 Manufacturer Had 360 Machines and No Idea Which 30 Were Killing Their Output</h1>
+        <p class="article-meta" data-reveal style="--reveal-delay:.12s">
+          <time datetime="2026-06-19">19 June 2026</time><span class="dot"></span><span>2 min read</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--narrow">
+
+      <img class="article-hero" src="{{BASE}}assets/img/insights/wide/machines-killing-output.jpg"
+           alt="" width="1200" height="675" fetchpriority="high" decoding="async" data-reveal="fade">
+
+      <div class="prose" data-reveal="fade" style="--reveal-delay:.1s">
+          <p>360 machines. 200,000 finished variants. The plant was operating at full capacity - or so the spreadsheet said. The question nobody had actually answered was simpler and more uncomfortable: which specific machines were responsible for the losses?</p>
+          <h2>The Problem With Manual OEE at Scale</h2>
+          <p>Imagine trying to diagnose a problem in a room of 360 people when your only source of information is what those 360 people choose to write down at the end of the day. That is what manual OEE tracking looks like at a manufacturer of this size. The spreadsheet had numbers. The numbers had the right format. But they were a composite of what supervisors noticed, what operators felt was worth recording, and what the formula in Column F decided to calculate. A 5% OEE improvement across 360 machines represents significant revenue. Identifying where that 5% lives requires something the spreadsheet could never provide: precision.</p>
+          <h2>What Changed When the Plant Connected</h2>
+          <p>Three weeks. That is how long it took from IIoT deployment to live machine-level data across the facility. Sensors, PLCs, and gateways captured machine events to the millisecond. Suddenly, the Six Big Losses were no longer a framework from a lean manufacturing course. They were specific events, time-stamped, attached to individual machines, visible to anyone with a dashboard login. What the data showed was not what anyone expected. The loss was not evenly distributed. It was concentrated. A cluster of welding stations was haemorrhaging production time through micro-stoppages caused by wire, gas, and electrode depletion — events so brief they had never triggered a formal alarm but so frequent they were destroying shift efficiency.</p>
+          <h2>30% Is Not a Target. It Is What Happens When You Finally See Clearly.</h2>
+          <p>A 30% improvement in machine utilisation sounds like a target someone set in a strategy meeting. It was not. It was the natural result of identifying the problem precisely and fixing exactly that. Consumable monitoring alerts gave operators advance warning of depletion before the stoppage happened. The welding stations stopped losing time to events that were, in hindsight, entirely predictable. Nothing about the machines changed. Nothing about the process changed. What changed was the information available to the people running the line.</p>
+          <h2>The Competitive Implication</h2>
+          <p>Tier-1 manufacturing is an environment of thin margins and intense OEM scrutiny. The companies holding their ground in that environment are not always the ones who have invested the most in new equipment. Often, they are the ones who have invested in understanding what their existing equipment is actually doing — and acted on what they found.</p>
+          <blockquote>
+          <p>300 machines running without real-time visibility is not automation. It is scale without intelligence. <a href="{{BASE}}">KNEO Automation</a>
+          </p>
+          </blockquote>
+      </div>
+
+      <div class="article-foot" data-reveal="fade">
+        <a class="link" href="{{BASE}}insights.html">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12 6 8l4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to all insights</a>
+        <a class="btn btn--primary" href="{{BASE}}contact.html">Talk to our team
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Article structured data. Publisher/date come from the live post, so they
+       stay accurate; nothing here is asserted that the article does not state. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "A Tier-1 Manufacturer Had 360 Machines and No Idea Which 30 Were Killing Their Output",
+    "datePublished": "2026-06-19",
+    "articleSection": "OEE &amp; Visibility",
+    "image": "{{SITE}}/assets/img/insights/wide/machines-killing-output.jpg",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{SITE}}/blog/machines-killing-output/" },
+    "publisher": { "@type": "Organization", "name": "KNEO Automation Pvt. Ltd." }
+  }
+  </script>
+
+</main>

@@ -1,0 +1,106 @@
+      <!-- ============================================================
+           MAPP architecture — ORIGINAL layout. Used by the MAPP page only.
+
+           The home page pulls in architecture.html instead (curved signal-flow
+           bands with a live sample dashboard). Both are kept on purpose: this
+           layout was asked back specifically for /mapp/, so the two pages are
+           meant to differ. Editing one does not affect the other.
+
+           Every rule for this version is scoped under .arch--classic in
+           main.css, so the two designs can share the .arch namespace. Keep
+           that class on the wrapper below.
+
+           Built in HTML rather than as one flat SVG so the six module
+           tiles can be real links, the labels stay selectable and
+           indexable, and the data flow can actually animate.
+           ============================================================ -->
+      <div class="arch arch--classic" data-reveal="fade">
+
+        <!-- ---------- Top floor ---------- -->
+        <div class="arch__layer" data-reveal style="--reveal-delay:.5s">
+          <span class="arch__label">Top floor — Enterprise</span>
+          <div class="arch__nodes">
+            <div class="arch__node">ERP / SAP</div>
+            <div class="arch__node">BI &amp; Reporting</div>
+            <div class="arch__node">Planning</div>
+            <div class="arch__node">Quality Dept</div>
+            <div class="arch__node">Management</div>
+          </div>
+        </div>
+
+        <div class="arch__flow" aria-hidden="true">
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+        </div>
+
+        <!-- ---------- MAPP platform ---------- -->
+        <div class="arch__platform" data-reveal style="--reveal-delay:.35s">
+          <span class="arch__label arch__label--accent">MAPP · MES / IIoT Platform — on-premise or cloud</span>
+          <div class="arch__nodes arch__nodes--modules">
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-eye.html">
+              <span class="arch__node-name">EYE</span><span class="arch__node-sub">OEE</span>
+            </a>
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-zen.html">
+              <span class="arch__node-name">ZEN</span><span class="arch__node-sub">Quality</span>
+            </a>
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-trail.html">
+              <span class="arch__node-name">TRAIL</span><span class="arch__node-sub">Trace</span>
+            </a>
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-vita.html">
+              <span class="arch__node-name">VITA</span><span class="arch__node-sub">Maintenance</span>
+            </a>
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-adept.html">
+              <span class="arch__node-name">ADEPT</span><span class="arch__node-sub">Scheduling</span>
+            </a>
+            <a class="arch__node arch__node--module" href="{{BASE}}mapp/mapp-sprint.html">
+              <span class="arch__node-name">SPRINT</span><span class="arch__node-sub">Supply</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="arch__flow" aria-hidden="true">
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+        </div>
+
+        <!-- ---------- Protocol bus ---------- -->
+        <div class="arch__bus" data-reveal style="--reveal-delay:.2s">
+          <span class="arch__bus-line" aria-hidden="true"></span>
+          <span class="arch__bus-label">OPC UA · MQTT · Modbus · PROFINET · EtherNet/IP</span>
+          <span class="arch__bus-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="arch__flow" aria-hidden="true">
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+          <span class="arch__line"><i class="arch__pulse"></i></span>
+        </div>
+
+        <!-- ---------- Shop floor ---------- -->
+        <div class="arch__layer" data-reveal style="--reveal-delay:.05s">
+          <div class="arch__nodes">
+            <div class="arch__node arch__node--source">PLC / PAC</div>
+            <div class="arch__node arch__node--source">Robot cells</div>
+            <div class="arch__node arch__node--source">Sensors / IO</div>
+            <div class="arch__node arch__node--source">Vision systems</div>
+            <div class="arch__node arch__node--source">Drives / Energy</div>
+          </div>
+          <span class="arch__label">Shop floor — machines, cells &amp; lines</span>
+        </div>
+
+        <!-- ---------- What it means ---------- -->
+        <ol class="arch__story" data-reveal style="--reveal-delay:.6s">
+          <li><strong>Your machines already produce it.</strong> Counts, cycle times, alarms, torque, temperature — sitting inside the controller.</li>
+          <li><strong>Open protocols carry it up.</strong> No proprietary gateway, no rip-and-replace of equipment that works.</li>
+          <li><strong>MAPP turns it into decisions.</strong> OEE, quality records, traceability, schedules — in front of the people who can act.</li>
+        </ol>
+
+      </div>

@@ -1,0 +1,38 @@
+  <!-- ==================== SOLVE ROUTER (COMPACT) ====================
+       The short form of the home page's "What are you trying to solve?"
+       section, for deep pages.
+
+       Most visitors never see the home page - they arrive from search on a
+       service page, a MAPP module or an article. Those pages could answer one
+       question well and then offer nothing except a contact form, so a reader
+       whose problem was slightly different had nowhere to go but the back
+       button. This gives every page a way sideways.
+
+       Kept to plain links rather than the home page's cards: at the foot of a
+       page that has already made its argument, this is a signpost, not a
+       feature.
+
+       NOTE: the route list is duplicated in the home page's START HERE
+       section. build.sh compares the two on every build and warns if they
+       drift apart. Change one, change the other.
+       ================================================================= -->
+  <section class="section section--tight solve-strip" aria-labelledby="solve-strip-title">
+    <div class="container">
+      <p class="eyebrow eyebrow--muted" id="solve-strip-title" data-reveal="fade">Looking for something else?</p>
+      <nav class="solve-strip__links" aria-label="Common problems we are asked to solve" data-reveal>
+        <a href="{{BASE}}industrial-automation.html">Automate a line</a>
+        <a href="{{BASE}}services/plc-hmi-scada-robot-programming.html">PLC / SCADA / robots</a>
+        <a href="{{BASE}}services/retrofit-retooling-relocation.html">Retrofit old equipment</a>
+        <a href="{{BASE}}mapp.html">See plant performance</a>
+        <a href="{{BASE}}services/cycle-time-study.html">Cut cycle time</a>
+        <a href="{{BASE}}products.html">Digital quality</a>
+        <a href="{{BASE}}mapp/mapp-trail.html">Track &amp; trace</a>
+        <a href="{{BASE}}mapp/mapp-vita.html">Predict failures</a>
+        <a href="{{BASE}}products/mapp-vision.html">Automated inspection</a>
+        <a href="{{BASE}}mapp/mapp-adept.html">Production scheduling</a>
+        <a href="{{BASE}}industries.html" class="solve-strip__industry">Or browse by industry
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </nav>
+    </div>
+  </section>

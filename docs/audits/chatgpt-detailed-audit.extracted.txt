@@ -1,0 +1,335 @@
+
+KNEO AUTOMATION
+Website Detailed Audit & Improvement Plan
+Pre-Launch Review • Positioning • UX • Technical Claims • Lead Generation
+Executive conclusionThe website is now strong enough to move toward launch. A major redesign is not recommended at this stage. Before switching the production domain, KNEO should correct a small number of factual/content inconsistencies, verify quantified claims and customer-logo wording, and complete a technical launch QA. After launch, effort should shift from general website polishing toward search-driven lead generation and conversion around Auto Ballooning, PFMEA, MAPP EYE, MAPP ZEN and offshore PLC/EPLAN engineering.
+Prepared: 26 September 2026
+
+1. Executive Summary
+The current KNEO website communicates a much clearer business story than a generic industrial automation website. The positioning now connects KNEO's established automation engineering capabilities with its digital manufacturing and quality software direction.
+Core positioning is clear: Industrial Automation is the engineering foundation; MAPP and related digital products are the differentiation and growth story.
+The homepage gives visitors multiple entry points based on the problem they are trying to solve rather than forcing every visitor through one generic sales message.
+The Industrial Automation page establishes KNEO as an engineering partner rather than only a PLC programming contractor.
+The MAPP, MAPP EYE and MAPP ZEN pages provide a credible digital manufacturing/product structure.
+Auto Ballooning has strong potential as a low-friction product-led entry point into larger quality/digital manufacturing engagements.
+The Contact page collects useful project context and is substantially better than a generic enquiry form.
+The remaining issues are primarily consistency, proof, technical QA, conversion optimisation and SEO—not a need for a new visual concept.
+Recommended launch position
+GO  Proceed toward launch after the mandatory pre-launch corrections and technical QA below.
+DO NOT  Do not delay launch for another major visual redesign unless a serious technical defect is discovered.
+NEXT PHASE  After launch, build an acquisition engine around specific products, engineering services, case studies, search intent and conversion-focused landing pages.
+2. Website Readiness Scorecard
+Area
+Current Assessment
+Priority
+Action
+Brand / Positioning
+Strong
+High
+Keep core positioning
+Homepage
+Strong / launch-ready
+High
+Minor CTA + proof refinements
+Industrial Automation
+Strong
+High
+Verify quantified claim
+MAPP Platform
+Strong
+Medium
+Strengthen on-premise/data-control message
+MAPP EYE
+Good
+Medium
+Add real dashboard proof later
+MAPP ZEN
+Good
+Medium
+Make connected quality workflow more visual
+Products
+Strong
+High
+Verify supported file formats
+Auto Ballooning
+Strong opportunity
+Very High
+Prioritise SEO + conversion
+PFMEA
+Good
+High
+Connect with broader quality workflow
+Services
+Good
+High
+Strengthen offshore engineering proposition
+Industries
+Good
+Medium
+Fix wording inconsistency; add case studies
+About
+Good
+High
+Fix experience-year inconsistency
+Contact
+Strong
+Very High
+Test form end-to-end
+SEO / Technical
+Pre-launch QA required
+Very High
+Run complete technical checklist
+3. Detailed Page-by-Page Review
+3.1 Homepage
+The homepage is the primary strategic asset. The headline “From Industrial Automation to Digital Manufacturing.” communicates the evolution of the company without hiding the established automation business.
+Keep the current positioning architecture: automation first, digital manufacturing as the differentiator.
+Keep the “What are you trying to solve?” structure because it lets different buyer types self-select.
+Change the primary hero CTA to something closer to “Discuss Your Automation Requirement” or “Discuss Your Project” if automation remains the larger current revenue engine.
+Keep “Explore the MAPP Platform” as the secondary CTA.
+Audit every customer logo and relationship claim. If a logo represents an indirect project/end user rather than a direct customer, change the wording to avoid implying a direct contractual relationship.
+Add more proof over time: quantified project outcomes, case studies, project photos, commissioning examples and screenshots.
+3.2 Industrial Automation
+This is one of the strongest pages because it demonstrates engineering depth across electrical design, controls, SCADA, robotics, panels and commissioning.
+Retain the detailed technology stack; technical buyers need this information.
+Keep the “engineering approach, not a brochure” style of CTA because it differentiates KNEO from generic automation suppliers.
+Verify the claim “40% Less onsite time via virtual commissioning.” If there is no documented project evidence, replace the percentage with a non-quantified claim such as “Reduced onsite commissioning time through virtual commissioning.”
+Add a prominent international/offshore engineering block: “Offshore Engineering. Onsite Commissioning.”
+Explain how KNEO can provide PLC programming, EPLAN/electrical engineering, simulation and documentation capacity without requiring the customer to hire additional internal engineering staff.
+3.3 MAPP Platform
+The MAPP page now presents the platform as a modular digital manufacturing layer rather than an oversized generic MES.
+Keep the machine/PLC → protocol → MAPP → ERP/BI/management architecture.
+Keep the modular message: customers can start with one module and expand.
+Make on-premise deployment and data control more prominent.
+Use language such as “Keep production data inside your factory” where technically accurate.
+Add architecture diagrams and screenshots later to move the page from explanation to proof.
+Add a clear distinction between current production-ready modules and roadmap/future capabilities if necessary.
+3.4 MAPP EYE
+The OEE/performance positioning is clear. The next major improvement should be proof rather than more feature copy.
+Add 2–3 authentic dashboard screenshots.
+Show a real-world OEE workflow: production → downtime → Pareto → root cause → improvement.
+Add a short case study when available.
+Include measurable outcomes only when backed by project data.
+3.5 MAPP ZEN
+MAPP ZEN has strong strategic value because it can connect drawing interpretation, process quality and inspection workflows.
+Make the connected workflow visually dominant: Drawing → Ballooning → PFD → PFMEA → Control Plan → Inspection → SPC → NCR.
+Position ZEN as an integrated quality workflow rather than isolated quality software.
+Show how Auto Ballooning can become an entry point and how customers can expand into the wider quality platform.
+Add screenshots of actual workflows as the product matures.
+3.6 Products
+The Products page gives the software portfolio a clear structure and contains a strong low-friction CTA around submitting a drawing.
+Keep the four-product architecture.
+Keep the “Send us one drawing. We'll show you the difference.” concept for Auto Ballooning.
+Verify every listed input/output file format. Do not advertise a format until production support is confirmed.
+Add comparison/selection guidance so visitors can understand which product fits which problem.
+Eventually add product-specific case studies, videos and downloadable technical material.
+3.7 Auto Ballooning
+Auto Ballooning is potentially one of the highest-value lead-generation pages because the purchase/assessment barrier can be lower than a complete MES implementation.
+Prioritise this page for SEO.
+Target search intent around Auto Ballooning Software, Engineering Drawing Ballooning Software, FAI Ballooning, PPAP Ballooning and automated drawing inspection workflows.
+Emphasise on-premise deployment/data privacy if technically supported.
+Use a real customer drawing demo or anonymised example.
+Show before/after workflow and time savings only when measured.
+Add FAQ content addressing PDF, TIFF, DWG/DXF, GD&T, OCR, revision control, manual verification and export workflows.
+3.8 PFMEA Software
+The PFMEA page is correctly positioned around AIAG-VDA, structured risk analysis and digital quality.
+Connect PFMEA to the broader quality chain rather than presenting it as a standalone database.
+Show how product characteristics/process steps can flow into control plans and inspection.
+Use screenshots and examples of real PFMEA workflows.
+Add AI-assistance explanation carefully: what is automated, what requires engineering approval and how auditability is preserved.
+3.9 Services
+The Services page has broad technical coverage but currently reads more like a capability catalogue than a focused sales page.
+Add a strong engineering-capacity message for machine builders and manufacturers.
+Create a dedicated section for offshore PLC programming, EPLAN engineering, simulation, documentation and onsite commissioning.
+Explain engagement models: project-based, dedicated engineering team, overflow capacity and onsite support, where commercially applicable.
+Add representative project examples.
+3.10 Industries
+The industry structure is easy to scan, but the page should become more evidence-driven over time.
+Fix the wording “Five industries, one pattern” if six industries are displayed.
+Prefer evergreen wording such as “Different industries. One recurring challenge.”
+Add one project example per priority industry.
+Add industry-specific problems and solutions rather than generic capability statements.
+Link each industry to relevant services/products.
+3.11 About Us
+The About page establishes the company journey from automation engineering toward robotics, MES and IIoT.
+Fix the inconsistent experience figures across the website.
+Prefer “Engineering Since 2003” as an evergreen company-history statement instead of manually updating 23+/24+ years.
+Add leadership/engineering credibility where appropriate.
+Add certifications, engineering standards, representative projects and geographic delivery capability if these are documented.
+3.12 Contact
+The Contact page is commercially strong because it collects project information before the first conversation.
+Test every field on desktop and mobile.
+Verify email delivery, spam handling and lead notification.
+Verify thank-you/confirmation behaviour.
+Connect conversion tracking where appropriate.
+Test the full submission from an external network before launch.
+Keep the promise that an engineer—not a call centre—responds within one business day only if the internal process consistently supports it.
+4. Mandatory Pre-Launch Corrections
+1 — Experience-year inconsistencyDifferent parts of the website currently reference 23+, 24+ and 23 years. Because the company history is stated as beginning in 2003, use “Engineering Since 2003” consistently. This is more durable and removes a recurring annual maintenance issue.
+2 — Industry-count inconsistencyThe Industries page uses wording indicating five industries while the visible structure contains six. Remove the number or correct it. Recommended wording: “Different industries. One recurring challenge.”
+3 — Quantified performance claimVerify the “40% Less onsite time via virtual commissioning” statement. Keep it only if KNEO can substantiate the number. Otherwise use a qualitative claim about reducing onsite commissioning time.
+4 — Customer/logo validationValidate every customer/manufacturer logo and the exact relationship represented. If the relationship is project-based, through an OEM, or indirect, use wording that accurately reflects the relationship.
+5 — Product capability validationVerify file formats and technical capabilities listed on product pages, especially Auto Ballooning input formats. Website claims should match the production release.
+5. Conversion & Lead Generation Improvements
+The next stage should focus less on adding more general company information and more on converting specific high-intent visitors into qualified enquiries.
+Buyer / Intent
+Recommended CTA
+Conversion Message
+Automation Projects
+“Discuss Your Automation Requirement”
+Ask for machine/process, PLC brand, cycle time, scope and project stage.
+Machine Builders / OEMs
+“Need Additional Engineering Capacity?”
+Offer offshore PLC, EPLAN, simulation, documentation and onsite commissioning support.
+Auto Ballooning
+“Send One Drawing for a Demo”
+Low-friction product demonstration using the visitor’s own drawing.
+PFMEA
+“Digitise Your PFMEA Workflow”
+Demo AIAG-VDA workflow and connection to control plans/inspection.
+MAPP EYE
+“See Your OEE in Real Time”
+Show a live/demo dashboard and quantify visibility benefits.
+MAPP ZEN
+“Connect Your Digital Quality Workflow”
+Demonstrate the full drawing-to-SPC workflow.
+6. SEO Improvements
+SEO should be treated as a commercial acquisition channel, not only a technical checklist. Build pages around the problems customers actively search for.
+Create dedicated landing pages for high-intent services: Siemens PLC programming, Rockwell/Allen-Bradley PLC programming, EPLAN electrical engineering, Ignition SCADA development, virtual commissioning, robotics integration and industrial control panel engineering.
+Create product landing pages for Auto Ballooning, PFMEA software, MAPP EYE and MAPP ZEN.
+Create industry pages for priority sectors only where KNEO has real project experience and evidence.
+Add case-study pages with structured problem → solution → technology → result format.
+Add FAQ sections to product pages based on real buyer questions.
+Use descriptive page titles, meta descriptions, canonical URLs, Open Graph data and structured internal linking.
+Create a logical internal-link network: services ↔ industries ↔ case studies ↔ products ↔ contact.
+Ensure every important page has one primary conversion action.
+Submit sitemap.xml and verify indexing through the appropriate search-engine webmaster tools after launch.
+7. Trust & Proof Improvements
+Replace some generic marketing statements with evidence wherever possible.
+Add project photographs: panels, control cabinets, robots, machine commissioning, HMI/SCADA screens and factory environments.
+Add authentic software screenshots for MAPP, EYE, ZEN and Auto Ballooning.
+Add short case studies with measurable outcomes when data is available.
+Show technology/vendor experience without implying official certification or partnership unless documented.
+Add engineering standards and safety capabilities only when KNEO can support the claims.
+Use customer testimonials only with permission and correct attribution.
+8. UX & Visual Improvements — Post-Launch
+Keep the current visual direction; do not redesign simply for cosmetic reasons.
+Increase visual proof on product pages.
+Use more process diagrams to explain complex engineering/software workflows.
+Reduce long text blocks where a diagram, screenshot or comparison would communicate faster.
+Keep CTAs consistent and predictable across the site.
+Make mobile layouts a first-class QA target, particularly hero sections, tables, forms and technical diagrams.
+Ensure animations do not delay content visibility or reduce accessibility/performance.
+9. Technical Pre-Launch Checklist
+☐ Test every navigation item and internal link.
+☐ Test all forms on desktop and mobile.
+☐ Verify enquiry emails arrive at the correct recipients.
+☐ Verify no form submissions are silently lost.
+☐ Verify spam protection and validation.
+☐ Set page titles and meta descriptions for every indexable page.
+☐ Set canonical URLs.
+☐ Verify robots.txt.
+☐ Verify sitemap.xml.
+☐ Verify favicon and social/Open Graph preview.
+☐ Set up analytics/conversion tracking.
+☐ Verify Search Console/webmaster ownership and sitemap submission.
+☐ Check 404 page and broken-link handling.
+☐ Set redirects from old URLs where URL paths have changed.
+☐ Check HTTPS and domain configuration.
+☐ Check page speed/Core Web Vitals.
+☐ Compress oversized images and videos.
+☐ Lazy-load non-critical media.
+☐ Check accessibility: contrast, keyboard navigation, alt text and form labels.
+☐ Test Chrome, Edge, Safari and mobile browsers.
+☐ Check 1280px, 1440px, 1920px desktop widths and common mobile widths.
+☐ Verify no placeholder copy, lorem ipsum, test emails or demo links remain.
+☐ Verify all claims, logos, certifications and product specifications.
+☐ Back up the current production website before switching domains.
+10. Post-Launch 30 / 60 / 90-Day Plan
+Days 0–30 — Stabilise & Measure
+Launch and monitor errors.
+Verify analytics and lead tracking.
+Measure enquiries by page and CTA.
+Fix broken links, indexing problems and mobile issues.
+Publish the highest-priority Auto Ballooning and service SEO improvements.
+Days 31–60 — Build Proof
+Publish 2–4 case studies.
+Add authentic product screenshots.
+Create one strong landing page for offshore engineering capacity.
+Create product FAQ content.
+Improve internal linking between products, services and industries.
+Days 61–90 — Scale Acquisition
+Create additional high-intent service/product landing pages.
+Build technical content around automation and digital manufacturing problems.
+Test CTA wording and form length.
+Use Search Console data to identify new keyword opportunities.
+Develop a repeatable case-study and engineering-content publishing process.
+11. Improvement Priority Matrix
+Priority
+Improvement
+Why It Matters
+Timing
+P0
+Fix factual/content inconsistencies
+Protects credibility before launch
+Before launch
+P0
+Verify customer/logo claims
+Prevents inaccurate relationship claims
+Before launch
+P0
+Verify quantified performance claim
+Prevents unsupported marketing claim
+Before launch
+P0
+Test forms and lead delivery
+Direct revenue impact
+Before launch
+P0
+Complete SEO/technical launch QA
+Ensures indexability and reliable launch
+Before launch
+P1
+Auto Ballooning SEO + landing-page optimisation
+High-intent, low-friction lead opportunity
+0–30 days
+P1
+Offshore PLC/EPLAN engineering proposition
+Targets international engineering demand
+0–60 days
+P1
+Case studies
+Adds proof and improves conversion
+30–60 days
+P1
+Product screenshots / demos
+Makes software tangible
+30–60 days
+P2
+Industry-specific pages
+Expands search coverage and relevance
+60–90 days
+P2
+CTA/A-B testing
+Improves conversion efficiency
+60–90 days
+P2
+Advanced content/knowledge centre
+Builds long-term organic authority
+90+ days
+12. Final Recommendation
+KNEO should treat the current website as the launch platform, not the final version. The fundamental story is now strong enough: KNEO combines industrial automation engineering with digital manufacturing and quality software. The site should now move into an evidence-and-acquisition phase.
+Recommended decisionProceed toward production launch after completing the five mandatory corrections and the technical QA checklist. Do not wait for another major redesign. The next investment should be in proof, SEO, case studies, product demonstrations, international engineering-service positioning and conversion optimisation.
+Appendix A — Suggested Core Messaging
+Primary company positioning: “From Industrial Automation to Digital Manufacturing.”
+Automation proposition: “Turnkey automation, without the vendor gaps.”
+Engineering-capacity proposition: “Offshore Engineering. Onsite Commissioning.”
+MAPP proposition: “Start with one module. Add the rest when you’re ready.”
+Auto Ballooning CTA: “Send us one drawing. We’ll show you the difference.”
+Company credibility: “Engineering Since 2003.”
+Appendix B — What Not to Do
+Do not keep redesigning the homepage without first measuring lead performance.
+Do not add unsupported percentages or customer claims just to make the website sound larger.
+Do not overload every page with technology names without explaining customer outcomes.
+Do not position MAPP as a generic replacement for every ERP/MES system; keep the modular manufacturing/data-layer story.
+Do not hide the automation business while promoting software—the engineering foundation is a major source of credibility.
+Do not make international buyers guess whether KNEO can provide offshore engineering support; make the offer explicit.

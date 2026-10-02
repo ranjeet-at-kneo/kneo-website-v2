@@ -1,0 +1,179 @@
+@TITLE FAQ | Industrial Automation &amp; Industry 4.0 | KNEO
+@DESC Common questions about Industry 4.0, IIoT, MES, data security, implementation cost and working with KNEO Automation — answered by our engineering team.
+@NAV company
+@OUT faq.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--tr" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><span aria-current="page">FAQ</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">Frequently asked questions</span>
+        <h1 data-split>Industry 4.0, without the <span class="accent-text">jargon.</span></h1>
+        <p class="lead" data-reveal style="--reveal-delay:.3s">
+          The questions manufacturers actually ask us before starting a digitalisation programme —
+          answered plainly by the engineers who deliver them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+
+      <h2 class="h3 mb-2" data-reveal="fade">Industry 4.0</h2>
+      <div class="accordion mt-2" data-single data-reveal="fade">
+
+        <div class="accordion__item is-open">
+          <button class="accordion__trigger" type="button">What is Industry 4.0, and how does it actually work?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Industry 4.0 is the connection of physical production equipment to software that can collect, contextualise and act on its data. In practice it means three layers: sensors and controllers on the shop floor that already generate signals; a connectivity layer (OPC UA, MQTT, Modbus, PROFINET, EtherNet/IP) that carries those signals off the machine; and a platform layer — MES, IIoT, analytics — that turns them into OEE figures, quality records, maintenance triggers and schedules.</p>
+            <p>Nothing about it requires replacing your machines. Most of our projects start by instrumenting equipment that has been running for a decade.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Why is Industry 4.0 important in manufacturing?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Because most plants cannot answer basic questions quickly: which machine lost us the most output last week, why a batch failed, which tool is due for change, whether today's schedule is achievable. Without instrumentation those answers arrive weeks late, if at all.</p>
+            <p>Connected systems close that gap. They make losses visible while they are still happening, which is the only point at which someone can do something about them.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">How is Industry 4.0 different from IoT or IIoT?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>IoT is the general idea of connected devices. IIoT is the industrial subset — machines, controllers and sensors in production environments, where reliability, determinism and safety matter far more than in consumer applications.</p>
+            <p>Industry 4.0 is the broader operating model: IIoT connectivity plus MES, digital quality, traceability, simulation, robotics and the organisational changes needed to use them. IIoT is a component; Industry 4.0 is the programme.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Will my company data be safe on a connected system?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>That is a design decision, not a leap of faith. The MAPP platform runs either fully on-premise inside your plant network — where no production data leaves the site — or in a hosted environment with region-selectable residency, depending on your IT policy.</p>
+            <p>Either way the platform uses role-based access control, audit trails and version control, and our vision products can perform inference entirely on local infrastructure. We scope security requirements with your IT team before deployment, not after.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">What benefits can I expect from smart technologies?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Typically: real-time visibility of machine, line and plant performance; reduced downtime through live alerts and reason-coded stoppages; higher productivity from bottleneck analysis that shows where improvement effort actually pays; better quality through digital inspection and SPC; and faster, more defensible traceability when a customer or auditor asks.</p>
+            <p>The specific numbers depend on your starting point. We benchmark before we quote so the business case is yours, not a brochure average.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">What does an Industry 4.0 implementation cost?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>It scales with the number of machines connected, the modules deployed and whether existing equipment needs retrofitting to expose data. A single-line MAPP EYE deployment is a very different commitment from a multi-site MES rollout with quality, maintenance and scheduling.</p>
+            <p>Because MAPP is modular, most customers start with one module on one line, prove the return, and expand from there. We will always tell you which phase we would do first if it were our money.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">How do I get started?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Start with a scoped assessment: what equipment you have, what data it can already expose, where your biggest losses are, and what you need to report to whom. That usually takes a short site visit and a conversation with production and IT together.</p>
+            <p>From there we recommend a first phase small enough to deliver quickly and significant enough to prove value — commonly performance monitoring on a single constrained line.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Can MAPP interface with SAP or other ERP systems?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Yes. Database and ERP integration is a core part of the platform. MAPP ADEPT synchronises production orders from ERP and writes WIP updates back; MAPP TRAIL maps supplier-to-customer material genealogy; and reporting modules can push consolidated data to BI tools.</p>
+            <p>Integration is scoped per customer, since every ERP deployment differs in structure and available interfaces.</p>
+          </div></div>
+        </div>
+
+      </div>
+
+      <h2 class="h3 mb-2 mt-4" data-reveal="fade">Working with KNEO</h2>
+      <div class="accordion mt-2" data-single data-reveal="fade">
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Why KNEO?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Because the whole scope sits with one team. Electrical design, controls software, robotics, virtual commissioning, MES platform and onsite commissioning are all delivered in-house — so responsibility never falls between two suppliers when something does not work.</p>
+            <p>We have been doing this since 2003, across 400+ projects in 30+ countries, under an ISO 9001:2015 quality system, and we are deliberately brand-agnostic across Siemens, Rockwell, Beckhoff, Mitsubishi, Delta, KUKA, FANUC, ABB and Yaskawa.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Do you provide end-to-end services and support?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Yes — from feasibility and cycle-time study through electrical design, panel build, software development, virtual commissioning, onsite commissioning and operator training.</p>
+            <p>After handover we provide ongoing maintenance, troubleshooting, software updates and system enhancements, under annual maintenance contracts that include 24/7 remote support.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">What locations do you serve?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Engineering is delivered from our offices in Warje, Pune and Valasarvakkam, Chennai. Commissioning teams travel to customer factories worldwide — we have delivered projects in more than 30 countries.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">Can you work on machines built by another supplier?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Routinely. A large part of our work is diagnosing performance problems in legacy or third-party systems and proposing modern upgrades — including SCADA integration, retrofitting, re-tooling and full line relocation.</p>
+            <p>Where documentation is missing we reverse-engineer the existing control scheme as part of the assessment.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button">What is virtual commissioning, and do I need it?<span class="accordion__icon" aria-hidden="true"></span></button>
+          <div class="accordion__panel"><div>
+            <p>Virtual commissioning tests the real control code against a simulated model of the machine before anything is installed. Collisions, sequence errors and logic faults get found in software rather than during a production window.</p>
+            <p>It is most valuable when onsite time is expensive or scarce — overseas installations, tight shutdown windows, or complex multi-robot cells. On such projects the onsite phase is materially shorter, because the sequence has already been proven against a model of the real cell.</p>
+          </div></div>
+        </div>
+
+      </div>
+
+      <div class="callout mt-4" data-reveal="fade">
+        <p><strong>Still have a question?</strong> Ask an engineer directly — <a href="{{BASE}}contact.html" style="color:inherit;text-decoration:underline">get in touch</a> or call <a href="tel:+919028236809" style="color:inherit;text-decoration:underline">+91 90282 36809</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is Industry 4.0, and how does it actually work?","acceptedAnswer":{"@type":"Answer","text":"Industry 4.0 is the connection of physical production equipment to software that can collect, contextualise and act on its data: sensors and controllers on the shop floor, a connectivity layer such as OPC UA or MQTT, and a platform layer of MES, IIoT and analytics that produces OEE figures, quality records, maintenance triggers and schedules. It does not require replacing existing machines."}},
+      {"@type":"Question","name":"How is Industry 4.0 different from IoT or IIoT?","acceptedAnswer":{"@type":"Answer","text":"IoT is the general idea of connected devices. IIoT is the industrial subset covering machines, controllers and sensors in production environments. Industry 4.0 is the broader operating model that adds MES, digital quality, traceability, simulation and robotics on top of IIoT connectivity."}},
+      {"@type":"Question","name":"Will my company data be safe on a connected system?","acceptedAnswer":{"@type":"Answer","text":"The MAPP platform runs either fully on-premise inside the plant network, where no production data leaves site, or in a hosted environment with region-selectable residency. It uses role-based access control, audit trails and version control, and vision inference can run entirely on local infrastructure."}},
+      {"@type":"Question","name":"Can MAPP interface with SAP or other ERP systems?","acceptedAnswer":{"@type":"Answer","text":"Yes. Database and ERP integration is a core part of the platform. MAPP ADEPT synchronises production orders from ERP and writes WIP updates back, and reporting modules can push consolidated data to BI tools. Integration is scoped per customer."}},
+      {"@type":"Question","name":"Do you provide end-to-end services and support?","acceptedAnswer":{"@type":"Answer","text":"Yes — from feasibility and cycle-time study through electrical design, panel build, software development, virtual commissioning, onsite commissioning and operator training, followed by ongoing maintenance, troubleshooting, software updates and system enhancements under annual maintenance contracts that include 24/7 remote support."}},
+      {"@type":"Question","name":"What locations do you serve?","acceptedAnswer":{"@type":"Answer","text":"Engineering is delivered from offices in Warje, Pune and Valasarvakkam, Chennai. Commissioning teams travel to customer factories worldwide, with projects delivered in more than 30 countries."}},
+      {"@type":"Question","name":"What is virtual commissioning, and do I need it?","acceptedAnswer":{"@type":"Answer","text":"Virtual commissioning tests real control code against a simulated model of the machine before installation, finding collisions, sequence errors and logic faults in software. On projects where onsite time is expensive or scarce it typically reduces onsite commissioning time by 30 to 40 percent."}}
+    ]
+  }
+  </script>
+
+  <section class="cta-band cta-band--accent">
+    <div class="bg-grid bg-grid--full" aria-hidden="true" style="--grid-line:rgba(255,255,255,.09)"></div>
+    <div class="container"><div class="cta-band__inner">
+      <span class="eyebrow" data-reveal="fade">Get in touch</span>
+      <h2 data-reveal>Ask us something specific.</h2>
+      <p data-reveal style="--reveal-delay:.1s">General answers only go so far. Tell us about your plant and we will give you a real one.</p>
+      <div class="btn-row btn-row--center" data-reveal style="--reveal-delay:.2s">
+        <a class="btn btn--invert btn--lg" href="{{BASE}}contact.html">Talk to Our Experts
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div></div>
+  </section>
+
+</main>

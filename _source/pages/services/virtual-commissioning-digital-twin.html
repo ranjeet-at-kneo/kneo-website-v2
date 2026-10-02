@@ -1,0 +1,180 @@
+@TITLE Virtual Commissioning &amp; Digital Twin | KNEO Automation
+@DESC Test and perfect your automation system in a risk-free digital twin before installation, so faults are found in software rather than on the shop floor.
+@NAV services
+@OUT services/virtual-commissioning-digital-twin.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--tr" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span>
+          <a href="{{BASE}}services.html">Services</a><span class="sep">/</span>
+          <span aria-current="page">Virtual Commissioning &amp; Digital Twin</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">Service 04 · Digital twin</span>
+        <h1 data-split>See it work before it's <span class="accent-text">built.</span></h1>
+        <p class="lead" data-reveal style="--reveal-delay:.3s">
+          Imagine catching every glitch, collision and programming error before your system ever touches the
+          shop floor. That's the power of virtual commissioning — a digital twin of your automation system
+          that lets us test, refine and perfect everything in a risk-free virtual world.
+        </p>
+        <div class="btn-row" data-reveal style="--reveal-delay:.4s">
+          <a class="btn btn--primary" href="{{BASE}}contact.html?req=virtual-commissioning">Explore Virtual Commissioning
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#how">How it works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="split__body">
+          <span class="eyebrow" data-reveal="fade">The problem</span>
+          <h2 data-reveal>Debugging on a live line is the most expensive place to do it.</h2>
+          <p class="lead mt-2" data-reveal style="--reveal-delay:.1s">
+            Traditional commissioning discovers logic faults with the machine in front of you, the customer
+            watching, and a production window closing. Every fix costs downtime, travel and credibility.
+          </p>
+          <p class="mt-2" data-reveal style="--reveal-delay:.15s">
+            On overseas installations the arithmetic is worse still: a problem that takes two hours to fix
+            can take two days to reach.
+          </p>
+        </div>
+        <div class="split__media" data-reveal="right">
+          <div class="stats stats--2">
+            <div class="stat"><div class="stat__value"><span class="counter" data-count="40">40</span><span class="suffix">%</span></div><div class="stat__label">Typical reduction in onsite time</div></div>
+            <div class="stat"><div class="stat__value">0</div><div class="stat__label">Collisions discovered on real hardware</div></div>
+          </div>
+          <div class="callout mt-2"><p>Less unexpected downtime, a faster startup, and a system that behaves on day one the way it did in simulation.</p></div>
+          <figure class="page-shot mt-3">
+            <img src="{{BASE}}assets/img/services/virtual-commissioning-digital-twin.jpg"
+            alt="A digital twin simulation of a production cell running on screen next to the physical equipment it models."
+            width="1400" height="783" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="how">
+    <div class="bg-grid bg-grid--full" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal="fade">How it works</span>
+        <h2 data-reveal>The real code, against a simulated machine.</h2>
+        <p class="lead" data-reveal style="--reveal-delay:.1s">A digital twin is not an animation. It is a physics- and signal-accurate model of your equipment, connected to the same PLC and robot programs that will ship.</p>
+      </div>
+
+      <div class="diagram" data-reveal="scale">
+        <svg viewBox="0 0 900 300" role="img" aria-labelledby="vc-t vc-d" preserveAspectRatio="xMidYMid meet">
+          <title id="vc-t">Virtual commissioning loop</title>
+          <desc id="vc-d">The real PLC and robot programs exchange I/O signals with a simulated machine model, so faults are found and corrected in software before physical installation.</desc>
+          <g class="svg-line" fill="none" stroke-width="1">
+            <rect class="svg-panel" x="40" y="70" width="230" height="150" rx="6"/><rect x="40" y="70" width="230" height="150" rx="6"/>
+            <rect class="svg-panel" x="630" y="70" width="230" height="150" rx="6"/><rect x="630" y="70" width="230" height="150" rx="6"/>
+          </g>
+          <rect x="330" y="100" width="240" height="90" rx="6" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <g class="svg-text">
+            <text x="58" y="98" fill="var(--accent)">REAL CONTROL SOFTWARE</text>
+            <text x="58" y="128">PLC PROGRAM (IEC 61131-3)</text>
+            <text x="58" y="152">ROBOT PROGRAM</text>
+            <text x="58" y="176">HMI / SCADA SCREENS</text>
+            <text x="58" y="200">SAFETY LOGIC</text>
+            <text x="648" y="98" fill="var(--accent)">SIMULATED MACHINE</text>
+            <text x="648" y="128">KINEMATICS &amp; GEOMETRY</text>
+            <text x="648" y="152">SENSOR &amp; ACTUATOR MODELS</text>
+            <text x="648" y="176">PART FLOW &amp; TIMING</text>
+            <text x="648" y="200">COLLISION VOLUMES</text>
+            <text x="352" y="132" fill="var(--accent)">SIGNAL EXCHANGE</text>
+            <text x="352" y="158">I/O · OPC UA · EMULATION</text>
+          </g>
+          <g class="svg-accent-stroke" stroke-width="1.5" fill="none" marker-end="url(#vcar)">
+            <path d="M270 125h55M575 125h50M625 168h-50M325 168h-50"/>
+          </g>
+          <defs><marker id="vcar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker></defs>
+          <text class="svg-text" x="40" y="255">FAULTS FOUND HERE COST MINUTES. THE SAME FAULTS FOUND ON SITE COST SHIFTS.</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div><span class="eyebrow" data-reveal="fade">What it catches</span><h2 data-reveal>The faults that<br>normally reach site.</h2></div>
+        <p class="lead" data-reveal style="--reveal-delay:.15s">Every one of these is routine to find in simulation and painful to find on a running machine.</p>
+      </div>
+      <div class="cardgrid cardgrid--3" data-reveal-group=".06">
+        <div class="cell" data-reveal><h3 class="h4">Collisions &amp; reach limits</h3><p>Robot paths that clash with fixtures, guarding or each other — including during fault-recovery moves nobody normally simulates.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Sequence &amp; interlock errors</h3><p>Deadlocks, missed handshakes and states the sequence cannot recover from without a power cycle.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Cycle time shortfalls</h3><p>Discover the cell is 1.8 seconds over takt while it is still cheap to change the mechanical concept.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">I/O mapping mistakes</h3><p>Wrong addresses, inverted signals and missing feedback found before anyone is on a ladder with a meter.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Alarm &amp; diagnostic gaps</h3><p>Faults that stop the machine without telling the operator anything useful about why.</p></div>
+        <div class="cell" data-reveal><h3 class="h4">Operator flow problems</h3><p>HMI sequences that are logical to an engineer and confusing to the person actually running the shift.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="split split--reverse">
+        <div class="split__body">
+          <span class="eyebrow" data-reveal="fade">Benefits</span>
+          <h2 data-reveal>Why it pays for itself.</h2>
+          <ul class="feature-list mt-3" data-reveal>
+            <li>Less onsite commissioning time, since faults are found and fixed in simulation first</li>
+            <li>Lower travel and accommodation cost on overseas installations</li>
+            <li>Shorter production shutdown windows for brownfield work</li>
+            <li>Operator training can begin before the machine is delivered</li>
+            <li>Cycle time verified against takt while changes are still cheap</li>
+            <li>Safety sequences rehearsed without exposing anyone to a real hazard</li>
+            <li>A reusable model for future product variants and line changes</li>
+          </ul>
+        </div>
+        <div class="split__media" data-reveal="left">
+          <div class="cardgrid cardgrid--2">
+            <div class="cell"><span class="cell__tag">Best for</span><p>Overseas installations where onsite time is expensive</p></div>
+            <div class="cell"><span class="cell__tag">Best for</span><p>Tight shutdown windows in existing plants</p></div>
+            <div class="cell"><span class="cell__tag">Best for</span><p>Multi-robot cells with complex interaction</p></div>
+            <div class="cell"><span class="cell__tag">Best for</span><p>High-mix lines with frequent changeover</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow" data-reveal="fade">Related</span><h2 data-reveal>Often delivered together with</h2></div>
+      <div class="grid grid-3 gap-md" data-reveal-group=".08">
+        <a class="card card--hover" href="{{BASE}}services/plc-hmi-scada-robot-programming.html" data-reveal><span class="cell__tag">Service 02</span><h3 class="h4">Controls software development</h3><p>Virtual commissioning validates the same code we write — not a simplified stand-in.</p></a>
+        <a class="card card--hover" href="{{BASE}}services/turnkey-automation.html" data-reveal><span class="cell__tag">Service 03</span><h3 class="h4">Turnkey automation</h3><p>Included as standard on complex multi-robot cells we design and build.</p></a>
+        <a class="card card--hover" href="{{BASE}}services/onsite-commissioning.html" data-reveal><span class="cell__tag">Service 08</span><h3 class="h4">Onsite commissioning</h3><p>Arrive on site to install and prove a system that has already been debugged.</p></a>
+      </div>
+    </div>
+  </section>
+
+  {{INCLUDE:solve-compact}}
+
+  <section class="cta-band cta-band--accent">
+    <div class="bg-grid bg-grid--full" aria-hidden="true" style="--grid-line:rgba(255,255,255,.09)"></div>
+    <div class="container"><div class="cta-band__inner">
+      <span class="eyebrow" data-reveal="fade">Get in touch</span>
+      <h2 data-reveal>The future of automation, today.</h2>
+      <p data-reveal style="--reveal-delay:.1s">If your next installation is overseas or inside a shutdown window, this is the conversation to have first.</p>
+      <div class="btn-row btn-row--center" data-reveal style="--reveal-delay:.2s">
+        <a class="btn btn--invert btn--lg" href="{{BASE}}contact.html?req=virtual-commissioning">Talk to Our Experts
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div></div>
+  </section>
+
+</main>

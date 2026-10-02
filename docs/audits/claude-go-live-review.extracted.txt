@@ -1,0 +1,287 @@
+KNEO Website
+Go-Live Review & Improvement Plan
+Site reviewed: kneo-website.vercel.app · Review date: 26 September 2026 · Prepared by: Mikey, KNEO Automation
+1. Summary and verdict
+Verdict: almost ready to go live. The site is ready once six must-fix items are closed, about half a day of work.
+All 55 pages were reviewed. The copy is strong and consistent in tone, with no typos, placeholder text or broken pages
+found. The remaining problems are inconsistent facts (years of experience, ISO wording, address), a few over-strong
+claims, and the domain switch-over from vercel.app to kneo.in.
+AreaStatus
+Copy quality and toneGood
+Factual consistencyNeeds fixes (years, ISO, address, brand lists, counts)
+Claims and superlativesSeveral need softening or evidence
+SEO basics (meta, OG, sitemap, robots, 404)In place, but point to vercel.app
+Legal pagesMissing dates and DPDP Act 2023 reference
+Mobile, speed, contact formNot verified remotely; test before launch
+2. Must fix before go-live
+These six items block launch. Everything else in this document can follow after go-live.
+#IssueWhereFix
+1Years of experience inconsistent: 23
+vs 24+
+Home, footer, FAQ say 23;
+About and all 6 industry pages
+say 24+
+Use 23 everywhere (founded 2003)
+2"ISO 9001:2015 Certified Since
+2003" is impossible; the 2015
+standard did not exist in 2003
+Footer badge; "since inception"
+on Contact
+Use "ISO 9001:2015 Certified ·
+Engineering since 2003"
+everywhere; fix "ISO9001" spelling
+on industry pages
+3Canonicals, OG image URLs,
+robots.txt and sitemap.xml point to
+kneo-website.vercel.app
+Site-wideSwitch to kneo.in; add 301 redirects
+from old kneo.in URLs; noindex or
+redirect the vercel.app copy
+4Real OEM and customer logo images
+(BMW, Ford, VW, ZF, Hyundai and
+others) may imply endorsement
+Home: OEM standards section
+and "Trusted on projects for…"
+strip
+Confirm permission, or switch to
+text names only
+5Office address mismatch: "Office
+502–504" vs "501–505" on
+letterhead
+Contact page vs KNEO
+letterhead
+Confirm the correct unit numbers
+and align both
+6Contact form not yet tested end to
+end
+Contact pageSubmit a test enquiry and confirm it
+reaches sales@
+3. Page-by-page review
+Priority: High = before launch, Medium = launch week, Low = polish.
+KNEO Website Go-Live Review · Page 1
+
+3.1 Home
+FindingRecommended changePriority
+"Six problems we are asked about most" is
+followed by ten tiles
+Change to "Ten problems…" or "The problems we
+are asked about most"
+High
+Brand list in "What we do" omits Delta
+and Yaskawa, which About and Services
+include
+Use one master brand list across all pagesMedium
+OEM and customer logo imagesSee must-fix #4High
+3.2 Industrial Automation
+FindingRecommended changePriority
+"40% less onsite time" is an unqualified
+claim
+Add "typical, based on our projects" or link to the
+Virtual Commissioning page
+Medium
+3.3 MES Platform (overview + 6 modules)
+The module pages (EYE, TRAIL, VITA, ADEPT, SPRINT) read well.
+FindingRecommended changePriority
+"Six modules. One platform. Complete
+visibility…" appears three times on the
+overview (menu, hero, body)
+Keep it in one place, ideally the heroLow
+EYE OEE waterfall shows −18% / −16% /
+−6% with no context
+Label the chart "Illustrative"Medium
+3.4 Products
+PageFindingRecommended changePriority
+Auto Ballooning"80% reduction in ballooning time"
+vs "4–6 h manual effort" (Drawing
+Inspection) vs "in minutes" (hub)
+Make the three statements tell one
+story; keep evidence for the 80% ready
+for sales calls
+Medium
+PFMEA"60% less engineering effort vs
+Excel"
+Back it with a case example, or soften
+to "significantly less"
+Medium
+MAPP Vision"Zero-defect standards"
+overpromises
+Use "Consistent inspection on every
+part"
+Medium
+3.5 Services
+PageFindingRecommended changePriority
+Virtual
+Commissioning
+"0 collisions discovered on real
+hardware" is absolute
+Use "Collisions found in simulation, not
+on site"
+High
+Onsite
+Commissioning
+Two sub-cards both titled
+"Support"
+Rename to "Remote support" and "Site
+visits"
+Medium
+Onsite
+Commissioning
+"24/7 remote support" conflicts
+with Mon–Fri 9–6 hours on Contact
+Add "for AMC customers", as the
+industry pages do
+High
+Services (general)"Unmatched after-sales support" is
+a superlative
+Use "After-sales support with named
+engineers"
+Low
+Expertise (footer
+only)
+Overlaps heavily with Industrial
+Automation; "STEP 7 V15.1" looks
+dated
+Merge into Industrial Automation, or
+remove version numbers
+Low
+KNEO Website Go-Live Review · Page 2
+
+PageFindingRecommended changePriority
+Electrical,
+PLC/SCADA,
+Turnkey, Ignition,
+Cycle Time,
+Retrofit
+No issues foundNone—
+3.6 Industries (hub + 6)
+FindingRecommended changePriority
+Hub says "Five industries, one pattern"
+directly under six industries
+Change to "Six industries…"High
+All six industry pages say 24+ yearsChange to 23 (must-fix #1)High
+"ISO9001" written without a spaceStandardise to "ISO 9001:2015"Medium
+3.7 About
+FindingRecommended changePriority
+24+ yearsChange to 23High
+Hero "The partner behind the world's
+smartest factories" is a large claim
+Use something concrete, e.g. "The engineering
+partner behind connected factories in 30+ countries"
+Medium
+3.8 Insights and articles
+FindingRecommended changePriority
+Articles show dates (e.g. 19 June 2026)
+but the Insights listing does not
+Show dates on the listing cardsLow
+Four articles show "Insight" where others
+show a read time
+Show read time on all articlesLow
+No author namesAdd "KNEO Engineering Team" or a named engineerMedium
+3.9 Contact, Careers, FAQ
+PageFindingRecommended changePriority
+ContactGood; address and ISO wording
+issues covered in must-fix list
+See must-fix #2, #5, #6High
+FAQGoodNone—
+CareersSix open roles with no dates will
+look stale
+Add "Updated Sept 2026" or reword to
+"Roles we regularly hire for"
+Medium
+3.10 Privacy and Terms
+FindingRecommended changePriority
+No "Effective date" or "Last updated" on
+either page
+Add bothHigh
+Privacy policy does not reference India's
+DPDP Act 2023
+Add a DPDP section covering purpose, consent and
+rights
+High
+sales@ is the privacy contactName a grievance officer with a dedicated emailHigh
+States no tracking cookies are usedUpdate if Google Analytics or similar is added at
+launch; add a cookie notice
+Medium
+KNEO Website Go-Live Review · Page 3
+
+3.11 Technical
+ItemStatus
+robots.txtPresent; update domain at launch
+sitemap.xml (60 URLs)Present; update domain at launch
+Meta titles and descriptionsIn place on all pages
+OG imagesIn place; update image URLs to kneo.in
+404 handlingUnknown pages correctly return 404
+4. Improvement plan (after launch)
+These go beyond fixing errors. They make the site more credible, easier to find, and better at turning visitors into RFQs
+and MES demos.
+#ImprovementWhy it mattersTiming
+1Keep one "master facts" sheet: years,
+address, ISO wording, brand list, country
+count, headline stats
+Stops the inconsistencies in this review from
+coming back as pages are edited
+Launch week
+2Build an evidence file for every number on
+the site (40%, 60%, 80%, 30+ countries)
+Sales can defend claims; weak claims get
+softened before a customer challenges them
+Month 1
+3Publish 3–5 case studies with measurable
+before/after results
+The strongest proof for a B2B integrator; lets
+claims link to a real project
+Months 1–3
+4Add structured data: Organization,
+LocalBusiness, FAQPage, Article
+Richer Google results and better local search
+visibility
+Month 1
+5Set up Google Search Console and analytics
+with a consent banner; submit sitemap
+Tracks indexing, rankings and which pages
+bring enquiries
+Launch week
+6Add a clear call to action on every page
+(Request a quote / Book an MES demo)
+Service and product pages should end with a
+next step, not a dead end
+Month 1
+7Let the RFQ form accept file uploads (specs,
+drawings, I/O lists)
+Industrial RFQs usually come with
+documents; fewer back-and-forth emails
+Month 1
+8Show partner and certification badges with
+links (e.g. Inductive Automation Integrator,
+ISO 9001:2015)
+Third-party proof carries more weight than
+self-description
+Month 1
+9Keep Insights active: one article a month,
+with author and date
+Freshness signals for SEO and shows current
+expertise
+Ongoing
+10Run Lighthouse on mobile and desktop;
+target 90+ for performance and accessibility
+Speed and accessibility affect rankings and
+first impressions
+Launch week
+11Review the customer names strip annuallyKeeps references current and approvedYearly
+5. Pre-launch QA checklist
+These could not be checked remotely and need a hands-on pass on a real phone and desktop before the switch.
+Every page viewed on a phone (Android and iPhone): layout, menu, tables, images☐
+Every page viewed on desktop in Chrome, Edge and Safari☐
+Contact form submitted; enquiry received at sales@; confirmation message shown☐
+Deployment map loads and is usable on mobile☐
+Page speed checked (Lighthouse or PageSpeed Insights)☐
+All internal links and menu items open the right page☐
+KNEO Website Go-Live Review · Page 4
+
+Canonicals, OG tags, robots.txt and sitemap.xml use kneo.in☐
+301 redirects from old kneo.in URLs tested☐
+vercel.app copy set to noindex or redirected☐
+Sitemap submitted in Google Search Console☐
+Social share preview checked (LinkedIn, WhatsApp)☐
+KNEO Website Go-Live Review · Page 5
+

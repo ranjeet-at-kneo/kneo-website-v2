@@ -1,0 +1,73 @@
+@TITLE The Costliest Mistake in Precision Manufacturing
+@DESC Picture a production line running four product variants. The routing for each variant lives in the ERP. The operator at Station 20 knows their job. What…
+@NAV company
+@OUT blog/expensive-mistake-precision-manufacturing.html
+@@
+<main id="main">
+
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><a href="{{BASE}}insights.html">Insights</a><span class="sep">/</span><span aria-current="page">The Most Expensive Mistake in Precision Manufacturing Is the One the Operator Did Not Know They Were Making</span>
+        </nav>
+        <span class="eyebrow" data-reveal="fade">Quality &amp; Poka-Yoke</span>
+        <h1 data-reveal>The Most Expensive Mistake in Precision Manufacturing Is the One the Operator Did Not Know They Were Making</h1>
+        <p class="article-meta" data-reveal style="--reveal-delay:.12s">
+          <time datetime="2026-06-19">19 June 2026</time><span class="dot"></span><span>2 min read</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--narrow">
+
+      <img class="article-hero" src="{{BASE}}assets/img/insights/wide/expensive-mistake-precision-manufacturing.jpg"
+           alt="" width="1200" height="675" fetchpriority="high" decoding="async" data-reveal="fade">
+
+      <div class="prose" data-reveal="fade" style="--reveal-delay:.1s">
+          <p>Picture a production line running four product variants. The routing for each variant lives in the ERP. The operator at Station 20 knows their job. What happens between those two facts is where precision manufacturing loses money.</p>
+          <h2>When Variants Diverge and Humans Are the Enforcement Mechanism</h2>
+          <p>Variant TML 1.4L: OP10, skip OP20, proceed to OP30. Variant Product-A: OP20 only. Two variants. Two different sequences. One operator. One barcode scanner. The difference between a correctly processed part and a defective one is, in this scenario, a single moment of attention - attention that an eight-hour shift, a noisy shop floor, and a high-volume production target will consistently erode. The system worked most of the time. In precision components manufacturing, most of the time is not an acceptable quality standard. The defects it produces compound quietly until a customer finds them.</p>
+          <h2>A Digital Poka-Yoke Does Not Rely on Attention</h2>
+          <p>The engineering solution here is elegant precisely because it removes the human attention variable entirely. A middleware layer was placed between the ERP and the shop-floor PLCs. Part arrives at station. Barcode scanned. System queries ERP recipe. System checks that all preceding operations were completed correctly. Only if both conditions are satisfied does the system send the cycle start signal to the PLC. No operator decision. No memory required. No reliance on a laminated routing card on the wall. The machine literally cannot process the wrong part in the wrong sequence. The Poka-Yoke is not a check. It is a lock.</p>
+          <h2>The Business Case for Error Prevention Over Error Detection</h2>
+          <p>End-of-line inspection is the manufacturing industry's most expensive habit. By the time a defect is detected at final inspection, the part has consumed machining time, operator time, fixturing time, and energy across multiple operations. In assemblies where a defective component is consumed by a downstream process before inspection catches it, the cost multiplies further still. Prevention and detection are not two approaches to the same problem. They are two fundamentally different calculations, and the arithmetic consistently favours prevention.</p>
+          <h2>The Traceability Dividend</h2>
+          <p>Every cycle in this plant now writes a record to the database: barcode, recipe, verification result, station ID, operator, timestamp. When a customer calls with a quality concern, the response is not 'we will investigate and get back to you.' It is 'let me pull up the record.' Part number, date, station, operator, process parameters - available in under a minute. This is not incidental to the Poka-Yoke system. It is a direct output of building digital process control into the production sequence.</p>
+          <blockquote>
+          <p>Poka-Yoke is not a technology investment. It is an insurance policy against the cost of human error at scale. <a href="{{BASE}}">KNEO Automation</a>
+          </p>
+          </blockquote>
+      </div>
+
+      <div class="article-foot" data-reveal="fade">
+        <a class="link" href="{{BASE}}insights.html">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12 6 8l4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to all insights</a>
+        <a class="btn btn--primary" href="{{BASE}}contact.html">Talk to our team
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Article structured data. Publisher/date come from the live post, so they
+       stay accurate; nothing here is asserted that the article does not state. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Most Expensive Mistake in Precision Manufacturing Is the One the Operator Did Not Know They Were Making",
+    "datePublished": "2026-06-19",
+    "articleSection": "Quality &amp; Poka-Yoke",
+    "image": "{{SITE}}/assets/img/insights/wide/expensive-mistake-precision-manufacturing.jpg",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{SITE}}/blog/expensive-mistake-precision-manufacturing/" },
+    "publisher": { "@type": "Organization", "name": "KNEO Automation Pvt. Ltd." }
+  }
+  </script>
+
+</main>

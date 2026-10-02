@@ -1,0 +1,121 @@
+# =============================================================================
+#  KNEO Automation — Apache configuration
+#  Upload this file to the web root alongside index.html.
+#
+#  The site is built so its public URLs are IDENTICAL to the ones Google has
+#  already indexed (/about/, /mapp/, /products/pfmea/ and so on). That means no
+#  per-page redirects are needed and no ranking is lost on relaunch. This file
+#  only handles the surrounding behaviour: canonical host, trailing slashes,
+#  the 404 page, compression and caching.
+# =============================================================================
+
+Options -Indexes
+DirectoryIndex index.html
+
+# -----------------------------------------------------------------------------
+# Error page
+# -----------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---------------------------------------------------------------------------
+  # Force HTTPS
+  # ---------------------------------------------------------------------------
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # One canonical hostname. kneo.in is the host currently indexed, so www is
+  # redirected to it. If you would rather standardise on www, swap this block
+  # for the commented one below instead of running both.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # Add the trailing slash to real directories, so /about resolves to /about/
+  # exactly as it does on the current site. Only fires when the directory
+  # actually exists, so it cannot affect anything this site does not serve.
+  #
+  # The old /blog exclusion is gone: the fifteen articles are now built by this
+  # site at their original /blog/<slug>/ addresses, so those URLs must be
+  # handled here like every other page. If a separate blog application is ever
+  # restored on this domain, put the exclusion back or the two will collide.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # Old flat URLs, in case anything ever linked to the .html form
+  # ---------------------------------------------------------------------------
+  RewriteCond %{REQUEST_URI} !^/404\.html$
+  RewriteRule ^(.+)\.html$ /$1/ [R=301,L]
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Compression — the site is text-heavy and compresses roughly 4x
+# -----------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Caching. HTML stays short-lived so content edits appear quickly; static
+# assets are cached hard. If you change main.css or main.js, rename the file
+# or add ?v=2 to the link so browsers pick the new one up immediately.
+# -----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType video/mp4                 "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType application/xml           "access plus 1 day"
+  ExpiresByType text/plain                "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|mp4|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Sensible baseline security headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Correct MIME types
+# -----------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/svg+xml   .svg
+  AddType application/xml .xml
+  AddType video/mp4       .mp4
+  AddType font/woff2      .woff2
+</IfModule>

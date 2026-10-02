@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<link rel="canonical" href="{{SITE}}/{{PATH}}">
+
+<meta name="author" content="KNEO Automation Pvt. Ltd.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#171A2E" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F2EE" media="(prefers-color-scheme: light)">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="KNEO Automation">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:url" content="{{SITE}}/{{PATH}}">
+<!-- LinkedIn, WhatsApp and X all reject SVG for link previews, so this is a
+     real 1200x630 JPG. Dimensions are declared so the card renders on first
+     scrape instead of after the crawler has fetched the file. -->
+<meta property="og:image" content="{{SITE}}/assets/img/og-cover.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KNEO Automation - engineering smarter, connected factories.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESC}}">
+<meta name="twitter:image" content="{{SITE}}/assets/img/og-cover.jpg">
+
+<link rel="icon" href="{{BASE}}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{BASE}}assets/img/favicon.svg">
+
+<!-- Theme + scroll bootstrap: runs before first paint, so there is no flash of
+     the wrong theme and no jump from a restored scroll position. -->
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  /* A stored choice wins. With none, follow the browser's colour scheme.
+     This has to resolve here, before first paint, or the page would flash
+     the wrong theme on every load. */
+  try{
+    var t=localStorage.getItem('kneo-theme');
+    if(t!=='light'&&t!=='dark'){
+      t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';
+    }
+    d.setAttribute('data-theme',t);
+  }catch(e){d.setAttribute('data-theme','dark');}
+  /* The brand intro plays once per visit, on whichever page is entered first.
+     The timer is a failsafe: if main.js never loads or throws, the overlay
+     still clears itself, so a scripting failure can never trap the page. */
+  try{if(sessionStorage.getItem('kneo-intro')==='1'){d.classList.add('pl-done');}}
+  catch(e){d.classList.add('pl-done');}
+  setTimeout(function(){d.classList.add('pl-done');},8000);
+  /* Load and reload start at the top of the page. Back/forward is left on the
+     browser's default so a reader returning to a list lands where they were. */
+  try{
+    if('scrollRestoration' in history){
+      var n=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+      var k=n?n.type:(performance.navigation&&performance.navigation.type===2?'back_forward':'navigate');
+      if(k!=='back_forward'){history.scrollRestoration='manual';}
+    }
+  }catch(e){}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+
+<link rel="stylesheet" href="{{BASE}}assets/css/main.min.css?v={{VER}}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{SITE}}/#organization",
+  "name": "KNEO Automation Pvt. Ltd.",
+  "alternateName": "KNEO Automation",
+  "url": "{{SITE}}/",
+  "logo": "{{SITE}}/assets/img/favicon.svg",
+  "description": "KNEO Automation delivers end-to-end industrial automation, controls and Industry 4.0 solutions — combining PLC engineering, robotics, SCADA and the MAPP IIoT/MES platform to help manufacturers improve performance, reliability, quality and traceability.",
+  "foundingDate": "2003",
+  "email": "sales@kneoautomation.com",
+  "telephone": "+91-90282-36809",
+  "sameAs": ["https://www.linkedin.com/company/kneo-automation-pvt-ltd"],
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "Office no. 502-504, 5th Floor, Highway Heights, Warje",
+      "addressLocality": "Pune",
+      "postalCode": "411058",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "Plot No 7, Bhuvaneswari Nagar, First Street, Alapakkam Road, Valasarvakkam",
+      "addressLocality": "Chennai",
+      "postalCode": "600087",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    }
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+91-90282-36809",
+    "email": "sales@kneoautomation.com",
+    "contactType": "sales",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["en"]
+  }],
+  "hasCredential": "ISO 9001:2015"
+}
+</script>
+</head>
+<body data-page="{{NAV}}" data-path="{{PATH}}">
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- Brand intro. Hidden unless html.js is set, so a reader without scripting
+     never sees it and never waits on it.
+
+     x is 234.6 rather than 240 because text-anchor centres the advance width,
+     not the ink: the K carries a wide left bearing and the O overshoots right,
+     which pushed the wordmark 5.3 units off true optical centre. -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <canvas class="preloader__map" aria-hidden="true"></canvas>
+  <svg class="preloader__mark" viewBox="0 0 480 121" role="img" aria-label="KNEO">
+    <defs>
+      <clipPath id="pl-clip">
+        <text class="preloader__glyphs" x="234.6" y="108" text-anchor="middle">KNEO</text>
+      </clipPath>
+    </defs>
+    <text class="preloader__glyphs preloader__outline" x="234.6" y="108" text-anchor="middle">KNEO</text>
+    <g clip-path="url(#pl-clip)">
+      <g class="preloader__liquid">
+        <path class="preloader__wave preloader__wave--back" d="M0,29 q40,-15 80,0 q40,15 80,0 q40,-15 80,0 q40,15 80,0 q40,-15 80,0 q40,15 80,0 q40,-15 80,0 q40,15 80,0 q40,-15 80,0 q40,15 80,0 q40,-15 80,0 q40,15 80,0 V420 H0 Z"/>
+        <path class="preloader__wave preloader__wave--front" d="M0,20 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 q30,-22 60,0 q30,22 60,0 V420 H0 Z"/>
+      </g>
+    </g>
+  </svg>
+</div>
