@@ -2,6 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
   "cleanUrls": false,
+  "buildCommand": "bash build.sh",
+  "installCommand": "npm --prefix _tools install",
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/products/mapp-eye/?", "destination": "/mapp/mapp-eye/" },
+    { "source": "/products/mapp-trail/?", "destination": "/mapp/mapp-trail/" },
+    { "source": "/products/mapp-adept/?", "destination": "/mapp/mapp-adept/" },
+    { "source": "/products/mapp-sprint/?", "destination": "/mapp/mapp-sprint/" },
+    { "source": "/products/mapp-vita/?", "destination": "/mapp/mapp-vita/" },
+    { "source": "/products/mapp-zen/?", "destination": "/mapp/mapp-zen/" },
+    { "source": "/products/pfd/?", "destination": "/products/drawing-inspection-workflow/" },
+    { "source": "/products/control-plan/?", "destination": "/products/drawing-inspection-workflow/" },
+    { "source": "/products/digital-inspection/?", "destination": "/products/drawing-inspection-workflow/" },
+    { "source": "/products/gage-management/?", "destination": "/products/drawing-inspection-workflow/" },
+    { "source": "/products/incoming-quality/?", "destination": "/products/drawing-inspection-workflow/" },
+    { "source": "/products/cbm/?", "destination": "/mapp/mapp-vita/" },
+    { "source": "/products/preventive-maintenance/?", "destination": "/mapp/mapp-vita/" },
+    { "source": "/products/ems/?", "destination": "/mapp/mapp-eye/" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

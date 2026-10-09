@@ -17,5 +17,34 @@ desktop.ini
 # Generated standalone app - build it with: node _tools/build-standalone.js
 dist-app/
 
-# Build-time only: see package.json. build.sh degrades gracefully without them.
+# Build-time dependencies
+node_modules/
 _tools/node_modules/
+
+# Build generated HTML pages & directories
+/about/
+/blog/
+/careers/
+/contact/
+/expertise/
+/faq/
+/industrial-automation/
+/industries/
+/insights/
+/mapp/
+/privacy-policy/
+/products/
+/services/
+/sitemap/
+/terms/
+/thankyou/
+/index.html
+/404.html
+
+# Build generated SEO files
+/sitemap.xml
+/robots.txt
+
+# Build generated minified assets
+/assets/css/main.min.css
+/assets/js/main.min.js

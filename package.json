@@ -1,0 +1,11 @@
+{
+  "name": "kneo-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KNEO Automation website",
+  "scripts": {
+    "postinstall": "npm --prefix _tools install",
+    "build": "node _tools/run-build.js",
+    "serve": "perl _tools/serve.pl . 8123"
+  }
+}
