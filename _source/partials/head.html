@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <meta name="author" content="KNEO Automation Pvt. Ltd.">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="{{ROBOTS}}">
 <meta name="theme-color" content="#171A2E" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F4F2EE" media="(prefers-color-scheme: light)">
 <meta name="format-detection" content="telephone=no">
@@ -78,8 +78,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="{{DESC}}">
 <meta name="twitter:image" content="{{SITE}}/assets/img/og-cover.jpg">
 
-<link rel="icon" href="{{BASE}}assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="{{BASE}}assets/img/favicon.svg">
+<link rel="icon" href="{{BASE}}favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="{{BASE}}assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{BASE}}assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="{{BASE}}assets/img/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{BASE}}assets/img/apple-touch-icon.png">
+<link rel="manifest" href="{{BASE}}site.webmanifest">
+<meta name="msapplication-TileColor" content="#171A2E">
+<meta name="msapplication-TileImage" content="{{BASE}}assets/img/android-chrome-192x192.png">
 
 <!-- Theme + scroll bootstrap: runs before first paint, so there is no flash of
      the wrong theme and no jump from a restored scroll position. -->
@@ -126,44 +132,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "{{SITE}}/#organization",
-  "name": "KNEO Automation Pvt. Ltd.",
-  "alternateName": "KNEO Automation",
-  "url": "{{SITE}}/",
-  "logo": "{{SITE}}/assets/img/favicon.svg",
-  "description": "KNEO Automation delivers end-to-end industrial automation, controls and Industry 4.0 solutions — combining PLC engineering, robotics, SCADA and the MAPP IIoT/MES platform to help manufacturers improve performance, reliability, quality and traceability.",
-  "foundingDate": "2003",
-  "email": "sales@kneoautomation.com",
-  "telephone": "+91-90282-36809",
-  "sameAs": ["https://www.linkedin.com/company/kneo-automation-pvt-ltd"],
-  "address": [
+  "@graph": [
     {
-      "@type": "PostalAddress",
-      "streetAddress": "Office no. 502-504, 5th Floor, Highway Heights, Warje",
-      "addressLocality": "Pune",
-      "postalCode": "411058",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
+      "@type": "Organization",
+      "@id": "{{SITE}}/#organization",
+      "name": "KNEO Automation Pvt. Ltd.",
+      "url": "{{SITE}}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{SITE}}/assets/img/kneo-logo.png",
+        "width": 200,
+        "height": 60
+      },
+      "description": "End-to-end industrial automation, controls and Industry 4.0 solutions — PLC, SCADA, robotics and the MAPP IIoT/MES platform.",
+      "foundingYear": "2003",
+      "email": "sales@kneoautomation.com",
+      "telephone": "+919028236809",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "501-505, Highway Heights, Warje",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411058",
+        "addressCountry": "IN"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+919028236809",
+          "contactType": "sales",
+          "areaServed": "Worldwide",
+          "availableLanguage": "English"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/kneo-automation-pvt-ltd"
+      ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 50
+      }
     },
     {
-      "@type": "PostalAddress",
-      "streetAddress": "Plot No 7, Bhuvaneswari Nagar, First Street, Alapakkam Road, Valasarvakkam",
-      "addressLocality": "Chennai",
-      "postalCode": "600087",
-      "addressRegion": "Tamil Nadu",
-      "addressCountry": "IN"
+      "@type": "Service",
+      "@id": "{{SITE}}/#service",
+      "name": "Industrial Automation Services",
+      "provider": {
+        "@type": "Organization",
+        "@id": "{{SITE}}/#organization",
+        "name": "KNEO Automation Pvt. Ltd."
+      },
+      "description": "Comprehensive industrial automation services including PLC engineering, SCADA systems, robotics integration, MES platforms, and Industry 4.0 turnkey solutions.",
+      "serviceType": "Industrial Automation & Industry 4.0",
+      "areaServed": "Worldwide"
     }
-  ],
-  "contactPoint": [{
-    "@type": "ContactPoint",
-    "telephone": "+91-90282-36809",
-    "email": "sales@kneoautomation.com",
-    "contactType": "sales",
-    "areaServed": "Worldwide",
-    "availableLanguage": ["en"]
-  }],
-  "hasCredential": "ISO 9001:2015"
+  ]
 }
 </script>
 </head>

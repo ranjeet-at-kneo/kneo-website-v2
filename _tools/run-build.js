@@ -12,5 +12,10 @@ if (process.platform === 'win32') {
   }
 }
 
-const res = spawnSync(bashCmd, ['build.sh'], { stdio: 'inherit' });
+const env = { ...process.env };
+if (process.argv.includes('--prod')) {
+  env.SITE_URL = 'https://kneo.in';
+}
+
+const res = spawnSync(bashCmd, ['build.sh'], { stdio: 'inherit', env });
 process.exit(res.status ?? (res.error ? 1 : 0));

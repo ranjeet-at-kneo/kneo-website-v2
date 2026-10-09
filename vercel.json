@@ -4,7 +4,7 @@
   "cleanUrls": false,
   "buildCommand": "bash build.sh",
   "installCommand": "npm --prefix _tools install",
-  "outputDirectory": ".",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/products/mapp-eye/?", "destination": "/mapp/mapp-eye/" },
     { "source": "/products/mapp-trail/?", "destination": "/mapp/mapp-trail/" },

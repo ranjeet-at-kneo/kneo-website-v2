@@ -29,10 +29,15 @@ if not exist "%PERL%" (
   exit /b 1
 )
 
+if not exist "dist" (
+  echo   Building site into dist/ first...
+  call node _tools\run-build.js
+)
+
 echo.
 echo   KNEO Automation - local preview
 echo   ------------------------------------------------
-echo   Serving:  %CD%
+echo   Serving:  %CD%\dist
 echo   Open:     http://localhost:8123/
 echo.
 echo   KEEP THIS WINDOW OPEN while browsing.
@@ -40,6 +45,6 @@ echo   Press Ctrl+C or close this window to stop.
 echo.
 
 start "" "http://localhost:8123/"
-"%PERL%" "_tools\serve.pl" "%CD%" 8123
+"%PERL%" "_tools\serve.pl" "%CD%\dist" 8123
 
 endlocal

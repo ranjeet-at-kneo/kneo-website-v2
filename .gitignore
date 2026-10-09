@@ -17,6 +17,9 @@ desktop.ini
 # Generated standalone app - build it with: node _tools/build-standalone.js
 dist-app/
 
+# Build output directory (clean deployable source)
+/dist/
+
 # Build-time dependencies
 node_modules/
 _tools/node_modules/

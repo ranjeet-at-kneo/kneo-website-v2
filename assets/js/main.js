@@ -1963,12 +1963,49 @@
           return null;
         });
 
-        Promise.allSettled([pabblyReq, crmReq]).then(function () {
+        Promise.allSettled([pabblyReq, crmReq]).then(function (results) {
+          var anySuccess = false;
+          var anyAttempted = false;
+
+          results.forEach(function (res) {
+            if (res.status === 'fulfilled' && res.value !== null) {
+              anyAttempted = true;
+              if (res.value.ok) anySuccess = true;
+            }
+          });
+
+          // Push dataLayer generate_lead event
+          try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'generate_lead',
+              lead_type: isModal ? 'whatsapp_widget' : 'contact_form',
+              service_interest: payload.service || 'General'
+            });
+          } catch (e) {}
+
+          if (anyAttempted && !anySuccess) {
+            if (submit) {
+              submit.disabled = false;
+              submit.classList.remove('is-loading');
+              var textSpan = submit.querySelector('.btn__text');
+              if (textSpan && submit.dataset.label) textSpan.textContent = submit.dataset.label;
+            }
+            setStatus('err', 'Submission failed. Please check your connection or contact us directly at sales@kneoautomation.com.');
+            return;
+          }
+
           form.reset();
           window.location.href = getBasePath() + 'thankyou/';
-        }).catch(function () {
-          form.reset();
-          window.location.href = getBasePath() + 'thankyou/';
+        }).catch(function (err) {
+          console.error('Submission error:', err);
+          if (submit) {
+            submit.disabled = false;
+            submit.classList.remove('is-loading');
+            var textSpan = submit.querySelector('.btn__text');
+            if (textSpan && submit.dataset.label) textSpan.textContent = submit.dataset.label;
+          }
+          setStatus('err', 'Submission failed. Please check your connection or contact us directly at sales@kneoautomation.com.');
         });
       });
     });

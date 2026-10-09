@@ -38,6 +38,7 @@
 set -u
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DIST="$ROOT/dist"
 SRC="$ROOT/_source"
 PAGES="$SRC/pages"
 PARTS="$SRC/partials"
@@ -59,6 +60,13 @@ if [ ! -d "$PAGES" ]; then
   echo "ERROR: $PAGES not found." >&2
   exit 1
 fi
+
+# Clean and prepare output dist directory
+mkdir -p "$DIST/assets"
+cp -r "$ROOT/assets"/* "$DIST/assets/"
+[ -f "$ROOT/.htaccess" ] && cp "$ROOT/.htaccess" "$DIST/.htaccess"
+[ -f "$ROOT/favicon.ico" ] && cp "$ROOT/favicon.ico" "$DIST/favicon.ico"
+[ -f "$ROOT/site.webmanifest" ] && cp "$ROOT/site.webmanifest" "$DIST/site.webmanifest"
 
 built=0
 declare -a CANONICALS=()
@@ -236,6 +244,79 @@ if ($buf =~ m{<nav class="crumbs"[^>]*>(.*?)</nav>}s) {
 print $buf;
 PERLEOF
 
+read -r -d '' PERL_ARTICLE <<'PERLEOF' || true
+# BlogPosting structured data for articles in /blog/
+my $path = shift // '';
+my $buf  = do { local $/; <STDIN> };
+
+if ($path =~ m{^blog/([^/]+)/?$}) {
+  my $slug = $1;
+  my $headline = '';
+  my $desc = '';
+  my $date = '';
+  my $category = '';
+  my $image = "{{SITE}}/assets/img/insights/wide/$slug.jpg";
+
+  if ($buf =~ m{<h1[^>]*>(.*?)</h1>}s) {
+    $headline = $1;
+    $headline =~ s/<[^>]+>//g;
+    $headline =~ s/\s+/ /g;
+    $headline =~ s/^ | $//g;
+    $headline =~ s/"/\\"/g;
+  }
+  if ($buf =~ m{<meta\s+name="description"\s+content="([^"]*)"}i) {
+    $desc = $1;
+    $desc =~ s/"/\\"/g;
+  }
+  if ($buf =~ m{<time\s+datetime="([^"]+)"}i) {
+    $date = $1;
+  }
+  if ($buf =~ m{<span\s+class="eyebrow"[^>]*>(.*?)</span>}s) {
+    $category = $1;
+    $category =~ s/<[^>]+>//g;
+    $category =~ s/\s+/ /g;
+    $category =~ s/^ | $//g;
+    $category =~ s/"/\\"/g;
+  }
+
+  if (length $headline && length $date) {
+    my $articleJson = <<"JSON";
+<script type="application/ld+json">
+{
+  "\@context": "https://schema.org",
+  "\@type": "BlogPosting",
+  "headline": "$headline",
+  "description": "$desc",
+  "image": "$image",
+  "datePublished": "$date",
+  "dateModified": "$date",
+  "articleSection": "$category",
+  "author": {
+    "\@type": "Organization",
+    "name": "KNEO Automation Pvt. Ltd.",
+    "url": "{{SITE}}/"
+  },
+  "publisher": {
+    "\@type": "Organization",
+    "name": "KNEO Automation Pvt. Ltd.",
+    "logo": {
+      "\@type": "ImageObject",
+      "url": "{{SITE}}/assets/img/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "\@type": "WebPage",
+    "\@id": "{{SITE}}/$path"
+  }
+}
+</script>
+JSON
+    $buf =~ s{(</head>)}{$articleJson$1}s;
+  }
+}
+print $buf;
+PERLEOF
+
 logo_count=$(find "$ROOT/assets/img/logos" -maxdepth 1 -type f \
   \( -iname '*.svg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.jpg' -o -iname '*.jpeg' \) 2>/dev/null | wc -l)
 
@@ -278,8 +359,8 @@ MIN_SIZES=""
 # is enough on its own for Vercel to stop serving this repo as static files and
 # start looking for a build to run, and the HTML here is already built.
 minify_assets() {
-  local css_src="$ROOT/assets/css/main.css" css_out="$ROOT/assets/css/main.min.css"
-  local js_src="$ROOT/assets/js/main.js"    js_out="$ROOT/assets/js/main.min.js"
+  local css_src="$ROOT/assets/css/main.css" css_out="$DIST/assets/css/main.min.css"
+  local js_src="$ROOT/assets/js/main.js"    js_out="$DIST/assets/js/main.min.js"
   local cleancss="$ROOT/_tools/node_modules/clean-css-cli/bin/cleancss"
   local terser="$ROOT/_tools/node_modules/terser/bin/terser"
 
@@ -291,6 +372,7 @@ minify_assets() {
 
   if node "$cleancss" -O2 -o "$css_out.tmp" "$css_src" >/dev/null 2>&1 && [ -s "$css_out.tmp" ]; then
     mv -f "$css_out.tmp" "$css_out"
+    cp -f "$css_out" "$ROOT/assets/css/main.min.css" 2>/dev/null || true
   else
     rm -f "$css_out.tmp"; cp "$css_src" "$css_out"
     MIN_NOTE="CSS minifier failed — stylesheet copied as-is"
@@ -301,6 +383,7 @@ minify_assets() {
   if node "$terser" "$js_src" --compress --mangle -o "$js_out.tmp.js" >/dev/null 2>&1 \
      && [ -s "$js_out.tmp.js" ] && node --check "$js_out.tmp.js" >/dev/null 2>&1; then
     mv -f "$js_out.tmp.js" "$js_out"
+    cp -f "$js_out" "$ROOT/assets/js/main.min.js" 2>/dev/null || true
   else
     rm -f "$js_out.tmp.js"; cp "$js_src" "$js_out"
     MIN_NOTE="${MIN_NOTE:+$MIN_NOTE; }JS minifier failed or unparsable — script copied as-is"
@@ -333,14 +416,15 @@ function rep(s, from, to,   out, p) {
 }
 {
   line = $0
-  line = rep(line, "{{BASE}}",  BASE)
-  line = rep(line, "{{TITLE}}", TITLE)
-  line = rep(line, "{{DESC}}",  DESC)
-  line = rep(line, "{{NAV}}",   NAV)
-  line = rep(line, "{{PATH}}",  PATH)
-  line = rep(line, "{{VER}}",   VER)
-  line = rep(line, "{{YEARS}}", YEARS)
-  line = rep(line, "{{SITE}}",  SITE)
+  line = rep(line, "{{BASE}}",   BASE)
+  line = rep(line, "{{TITLE}}",  TITLE)
+  line = rep(line, "{{DESC}}",   DESC)
+  line = rep(line, "{{NAV}}",    NAV)
+  line = rep(line, "{{PATH}}",   PATH)
+  line = rep(line, "{{VER}}",    VER)
+  line = rep(line, "{{YEARS}}",  YEARS)
+  line = rep(line, "{{SITE}}",   SITE)
+  line = rep(line, "{{ROBOTS}}", ROBOTS)
   if (NAV != "" && index(line, "data-nav=\"" NAV "\"") > 0) {
     line = rep(line, "data-nav=\"" NAV "\"", "data-nav=\"" NAV "\" aria-current=\"page\"")
   }
@@ -354,10 +438,12 @@ AWKEOF
 while IFS= read -r page; do
   [ -f "$page" ] || continue
 
-  TITLE=$(awk '/^@TITLE[ \t]/{ sub(/^@TITLE[ \t]+/,""); print; exit }' "$page")
-  DESC=$( awk '/^@DESC[ \t]/ { sub(/^@DESC[ \t]+/,"");  print; exit }' "$page")
-  NAV=$(  awk '/^@NAV[ \t]/  { sub(/^@NAV[ \t]+/,"");   print; exit }' "$page")
-  OUT=$(  awk '/^@OUT[ \t]/  { sub(/^@OUT[ \t]+/,"");   print; exit }' "$page")
+  TITLE=$( awk '/^@TITLE[ \t]/{ sub(/^@TITLE[ \t]+/,""); print; exit }' "$page")
+  DESC=$(  awk '/^@DESC[ \t]/ { sub(/^@DESC[ \t]+/,"");  print; exit }' "$page")
+  NAV=$(   awk '/^@NAV[ \t]/  { sub(/^@NAV[ \t]+/,"");   print; exit }' "$page")
+  OUT=$(   awk '/^@OUT[ \t]/  { sub(/^@OUT[ \t]+/,"");   print; exit }' "$page")
+  ROBOTS=$(awk '/^@ROBOTS[ \t]/{ sub(/^@ROBOTS[ \t]+/,""); print; exit }' "$page")
+  [ -z "${ROBOTS:-}" ] && ROBOTS="index, follow, max-image-preview:large"
 
   if [ -z "${OUT:-}" ]; then
     echo "  ! skipped (no @OUT): ${page#$ROOT/}" >&2
@@ -383,7 +469,7 @@ while IFS= read -r page; do
     while [ "$i" -lt "$depth" ]; do BASE="../$BASE"; i=$((i + 1)); done
   fi
 
-  DEST="$ROOT/$DEST_REL"
+  DEST="$DIST/$DEST_REL"
   mkdir -p "$(dirname "$DEST")"
 
   {
@@ -400,8 +486,10 @@ while IFS= read -r page; do
         -e 's|{{BASE}}\x01404\x01|{{BASE}}404.html|g' \
         -e 's|{{BASE}}\x02\x02|{{BASE}}|g' \
   | perl -e "$PERL_CRUMBS" "$CANON" \
+  | perl -e "$PERL_ARTICLE" "$CANON" \
   | awk -v BASE="$BASE" -v TITLE="$TITLE" -v DESC="$DESC" \
-        -v NAV="$NAV" -v PATH="$CANON" -v VER="$VER" -v YEARS="$YEARS" -v SITE="$SITE_URL" "$AWK_REPLACE" > "$DEST"
+        -v NAV="$NAV" -v PATH="$CANON" -v VER="$VER" -v YEARS="$YEARS" \
+        -v SITE="$SITE_URL" -v ROBOTS="$ROBOTS" "$AWK_REPLACE" > "$DEST"
 
   CANONICALS+=("$CANON")
   built=$((built + 1))
@@ -417,7 +505,7 @@ TODAY=$(date +%Y-%m-%d)
   echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
   for c in "${CANONICALS[@]}"; do
     case "$c" in
-      404.html) continue ;;
+      404.html|thankyou/) continue ;;
     esac
     prio="0.7"
     [ -z "$c" ] && prio="1.0"
@@ -429,12 +517,12 @@ TODAY=$(date +%Y-%m-%d)
       "$SITE_URL" "$c" "$TODAY" "$prio"
   done
   echo '</urlset>'
-} > "$ROOT/sitemap.xml"
+} > "$DIST/sitemap.xml"
 
 # -----------------------------------------------------------------------------
 # robots.txt
 # -----------------------------------------------------------------------------
-cat > "$ROOT/robots.txt" <<ROBOTS
+cat > "$DIST/robots.txt" <<ROBOTS
 User-agent: *
 Allow: /
 
@@ -483,7 +571,7 @@ router_drift() {
 router_drift
 
 echo ""
-echo "Built $built page(s) · sitemap.xml + robots.txt regenerated."
+echo "Built $built page(s) into dist/ · sitemap.xml + robots.txt regenerated."
 if [ -n "${MIN_NOTE:-}" ]; then
   echo "  ! assets: $MIN_NOTE"
 else

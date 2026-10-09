@@ -1,0 +1,21 @@
+{
+  "name": "KNEO Automation",
+  "short_name": "KNEO",
+  "description": "End-to-end industrial automation, controls and Industry 4.0 solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171A2E",
+  "theme_color": "#FF4B1F",
+  "icons": [
+    {
+      "src": "/assets/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "npm --prefix _tools install",
     "build": "node _tools/run-build.js",
-    "serve": "perl _tools/serve.pl . 8123"
+    "build:prod": "node _tools/run-build.js --prod",
+    "serve": "node _tools/serve.js dist 8123"
   }
 }

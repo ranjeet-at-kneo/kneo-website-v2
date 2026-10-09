@@ -1,6 +1,7 @@
 @TITLE Thank You | KNEO Automation
 @DESC Thank you for contacting KNEO Automation. Our engineering team has received your submission and will get back to you within 24 hours.
 @NAV none
+@ROBOTS noindex, nofollow
 @OUT thankyou.html
 @@
 <main id="main">
@@ -41,8 +42,13 @@
 </main>
 
 <script>
-  // Trigger Google Ads conversion event if gtag is present
+  // Trigger Google Ads conversion and dataLayer lead event
   try {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      page_type: 'thankyou'
+    });
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {
         'send_to': 'AW-18161933412'
