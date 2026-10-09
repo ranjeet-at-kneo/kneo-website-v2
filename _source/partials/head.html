@@ -8,6 +8,48 @@
 <meta name="description" content="{{DESC}}">
 <link rel="canonical" href="{{SITE}}/{{PATH}}">
 
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="KGXll_7LToT5zn5TkOpVa06uBaGTx9Q-1hmVMcSWsrI">
+
+<!-- Google Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var savedConsent = 'denied';
+  try {
+    var cc = localStorage.getItem('kneo-consent');
+    if (cc) {
+      var parsed = JSON.parse(cc);
+      if (parsed && parsed.state === 'granted') savedConsent = 'granted';
+    } else if (localStorage.getItem('kneo_cookie_consent') === 'granted') {
+      savedConsent = 'granted';
+    }
+  } catch (e) {}
+  gtag('consent', 'default', {
+    'ad_storage': savedConsent,
+    'ad_user_data': savedConsent,
+    'ad_personalization': savedConsent,
+    'analytics_storage': savedConsent
+  });
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MSZ7CCRX');</script>
+
+<!-- Google Ads (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18161933412"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18161933412');
+</script>
+
+
 <meta name="author" content="KNEO Automation Pvt. Ltd.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#171A2E" media="(prefers-color-scheme: dark)">
@@ -126,6 +168,11 @@
 </script>
 </head>
 <body data-page="{{NAV}}" data-path="{{PATH}}">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSZ7CCRX" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
 
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="scroll-progress" aria-hidden="true"></div>

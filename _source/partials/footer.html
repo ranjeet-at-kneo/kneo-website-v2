@@ -177,6 +177,41 @@
   </div>
 </div>
 
+<!-- LinkedIn Insight Tag (Loaded only when consent is granted, matching deployed app) -->
+<script type="text/javascript">
+(function() {
+  var partnerId = "10824777";
+  var loaded = false;
+
+  function loadLinkedIn() {
+    if (loaded) return;
+    loaded = true;
+    window._linkedin_partner_id = partnerId;
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(partnerId);
+    (function(l) {
+      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+      window.lintrk.q=[]}
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript"; b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  }
+
+  try {
+    if (localStorage.getItem("kneo_cookie_consent") === "granted") {
+      loadLinkedIn();
+    }
+  } catch(e) {}
+
+  window.addEventListener("kneo_consent_granted", loadLinkedIn);
+})();
+</script>
+
+{{INCLUDE:whatsapp-widget}}
+
 <script src="{{BASE}}assets/js/main.min.js?v={{VER}}" defer></script>
 </body>
 </html>

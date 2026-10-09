@@ -1775,9 +1775,85 @@
      13. FORMS
      ==================================================================== */
 
+  /* ====================================================================
+     13. FORMS & WHATSAPP WIDGET
+     ==================================================================== */
+
+  var PABBLY_WEBHOOK_URL = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZlMDYzMzA0MzI1MjY0NTUzYzUxMzUi_pc';
+  var CRM_ENDPOINT = 'https://kneocentralbackend.mesplatform.com/api/crm/leads';
+  var CRM_API_KEY = 'kneo_crm_B5FjzBSMRzSik9ddwBn9A-Wfv-t5-A-oif7m_KPoZns';
+
   function initForms() {
-    $$('form[data-form]').forEach(function (form) {
-      var status = $('.form__status', form);
+    // 1. WhatsApp / Contact Modal Controls
+    var waBtn = document.getElementById('kneoWaBtn');
+    var modal = document.getElementById('kneoLeadModal');
+    var modalClose = document.getElementById('kneoModalClose');
+
+    function openModal(defaultService) {
+      if (!modal) return;
+      modal.removeAttribute('hidden');
+      requestAnimationFrame(function () {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      if (defaultService) {
+        var svcSelect = modal.querySelector('select[name="service"]');
+        if (svcSelect) {
+          svcSelect.value = defaultService;
+        }
+      }
+      var nameInput = modal.querySelector('input[name="name"]');
+      if (nameInput) setTimeout(function () { nameInput.focus(); }, 120);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        modal.setAttribute('hidden', '');
+      }, 280);
+    }
+
+    if (waBtn) {
+      waBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener('click', function (e) {
+        e.preventDefault();
+        closeModal();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+
+    // Wire up all "Book Discovery Session", "Request Demo", or modal CTA triggers across the site
+    var ctaSelectors = '[data-open-modal], [data-demo-btn], a[href="#contact-modal"], a[aria-label="Contact us on WhatsApp"], button[aria-label="Contact us on WhatsApp"]';
+    document.querySelectorAll(ctaSelectors).forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var svc = btn.getAttribute('data-service') || btn.getAttribute('data-req') || '';
+        openModal(svc);
+      });
+    });
+
+    // 2. Reusable Lead Form Submission
+    document.querySelectorAll('form[data-kneo-lead-form], form.kneo-lead-form, form[data-form]').forEach(function (form) {
+      var status = form.querySelector('.form__status');
       var submit = form.querySelector('[type="submit"]');
 
       function setStatus(kind, message) {
@@ -1787,109 +1863,124 @@
         status.setAttribute('role', 'status');
       }
 
-      // Live-clear error state
-      $$('.field', form).forEach(function (field) {
-        var control = field.querySelector('input, textarea, select');
-        if (!control) return;
-        on(control, 'input', function () { field.classList.remove('has-error'); });
+      // Live-clear field errors
+      form.querySelectorAll('.field').forEach(function (field) {
+        var ctrl = field.querySelector('input, textarea, select');
+        if (!ctrl) return;
+        ctrl.addEventListener('input', function () { field.classList.remove('has-error'); });
       });
 
-      on(form, 'submit', function (e) {
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Honeypot — silently accept and do nothing
-        var honey = form.querySelector('[name="company_website"]');
-        if (honey && honey.value) { return; }
+        // Bot protection: honeypot
+        var hp = form.querySelector('[name="website"], [name="company_website"]');
+        if (hp && hp.value.trim() !== '') {
+          // Silent bot trap
+          window.location.href = getBasePath() + 'thankyou/';
+          return;
+        }
 
-        var fieldsValid = true;
+        var nameInput = form.querySelector('[name="name"]');
+        var emailInput = form.querySelector('[name="email"]');
+        var companyInput = form.querySelector('[name="company"]');
+        var codeInput = form.querySelector('[name="country_code"]');
+        var phoneInput = form.querySelector('[name="phone"]');
+        var serviceInput = form.querySelector('[name="service"], [name="requirement"]');
+        var msgInput = form.querySelector('[name="message"]');
+
+        var valid = true;
         var firstBad = null;
 
-        $$('.field', form).forEach(function (field) {
-          var control = field.querySelector('input, textarea, select');
-          if (!control) return;
-          field.classList.remove('has-error');
-          if (!control.checkValidity()) {
-            field.classList.add('has-error');
-            fieldsValid = false;
-            if (!firstBad) firstBad = control;
+        function checkField(input, condition) {
+          if (!input) return;
+          var field = input.closest('.field');
+          if (!condition) {
+            valid = false;
+            if (field) field.classList.add('has-error');
+            if (!firstBad) firstBad = input;
+          } else {
+            if (field) field.classList.remove('has-error');
           }
+        }
+
+        checkField(nameInput, nameInput && nameInput.value.trim().length > 0);
+        checkField(emailInput, emailInput && emailInput.value.trim().length > 0 && emailInput.checkValidity());
+
+        var rawPhone = phoneInput ? phoneInput.value.trim() : '';
+        var digitsOnly = rawPhone.replace(/\D/g, '');
+        checkField(phoneInput, digitsOnly.length >= 7);
+
+        checkField(msgInput, msgInput && msgInput.value.trim().length > 0);
+
+        if (!valid) {
+          if (firstBad) firstBad.focus();
+          setStatus('err', 'Please complete the highlighted fields with valid details.');
+          return;
+        }
+
+        var countryCode = codeInput ? codeInput.value : '+91';
+        var formattedPhone = countryCode + ' ' + rawPhone;
+        var isModal = !!form.closest('#kneoLeadModal');
+
+        var payload = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          company: companyInput ? companyInput.value.trim() : '',
+          phone: formattedPhone,
+          service: serviceInput ? serviceInput.value : '',
+          message: msgInput.value.trim(),
+          source: isModal ? 'KNEO Website WhatsApp Widget' : 'KNEO Website Contact Form',
+          page: window.location.href,
+          submittedAt: new Date().toISOString()
+        };
+
+        if (submit) {
+          submit.disabled = true;
+          submit.classList.add('is-loading');
+          var textSpan = submit.querySelector('.btn__text');
+          if (textSpan) { submit.dataset.label = textSpan.textContent; textSpan.textContent = 'Submitting...'; }
+        }
+
+        var pabblyReq = fetch(PABBLY_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function (err) {
+          console.error('Pabbly submission error:', err);
+          return null;
         });
 
-        var consent = form.querySelector('[data-consent]');
-        var consentOk = !consent || consent.checked;
+        var crmReq = fetch(CRM_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Api-Key': CRM_API_KEY
+          },
+          body: JSON.stringify(payload)
+        }).catch(function (err) {
+          console.error('CRM submission error:', err);
+          return null;
+        });
 
-        if (!fieldsValid || !consentOk) {
-          if (!firstBad && !consentOk) firstBad = consent;
-          if (firstBad) firstBad.focus();
-          setStatus('err', !fieldsValid
-            ? 'Please complete the highlighted fields.'
-            : 'Please accept the privacy policy to continue.');
-          return;
-        }
-
-        /* Posting the enquiry.
-
-           The mail-client handoff below used to be the ONLY path, because the
-           endpoint test demanded an absolute URL and the form had no action at
-           all. That meant pressing Send opened the visitor's mail client - or,
-           on webmail and locked-down corporate machines, did nothing at all
-           and lost the enquiry silently.
-
-           A same-origin path is now accepted, so /api/enquiry works. The
-           handoff is kept strictly as a fallback: if the endpoint reports that
-           no mail provider is configured yet (501), or cannot be reached at
-           all, the visitor still gets the old behaviour rather than a dead
-           form. */
-        var endpoint = form.getAttribute('action');
-        var usesEndpoint = endpoint && !/^mailto:/i.test(endpoint);
-
-        function mailtoFallback(note) {
-          var to = form.getAttribute('data-mailto') || 'sales@kneoautomation.com';
-          var data = new FormData(form);
-          var lines = [];
-          data.forEach(function (value, key) {
-            if (key === 'company_website' || key === 'consent') return;
-            if (!String(value).trim()) return;
-            var label = key.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
-            lines.push(label + ': ' + value);
-          });
-          var subject = form.getAttribute('data-subject') || 'Website enquiry — KNEO Automation';
-          window.location.href = 'mailto:' + to +
-            '?subject=' + encodeURIComponent(subject) +
-            '&body=' + encodeURIComponent(lines.join('\n'));
-          setStatus('ok', note || 'Your email client is opening with the enquiry ready to send. ' +
-            'If nothing happens, email sales@kneoautomation.com.');
-        }
-
-        if (usesEndpoint) {
-          if (submit) { submit.disabled = true; submit.dataset.label = submit.textContent; submit.textContent = 'Sending…'; }
-          fetch(endpoint, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { Accept: 'application/json' }
-          }).then(function (res) {
-            if (res.status === 501) {
-              // Endpoint is live but has no mail provider wired up yet.
-              mailtoFallback();
-              return;
-            }
-            if (!res.ok) throw new Error('Request failed ' + res.status);
-            form.reset();
-            var picker = $('[data-req-picker]', form);
-            if (picker) picker.dispatchEvent(new Event('change'));   // re-hide conditional fields
-            setStatus('ok', 'Thank you — your enquiry has been received. Our team will respond within one business day.');
-          }).catch(function () {
-            mailtoFallback('We could not reach the server, so your email client is opening ' +
-              'with the enquiry instead. If nothing happens, email sales@kneoautomation.com.');
-          }).finally(function () {
-            if (submit) { submit.disabled = false; submit.textContent = submit.dataset.label || 'Send enquiry'; }
-          });
-          return;
-        }
-
-        mailtoFallback();
+        Promise.allSettled([pabblyReq, crmReq]).then(function () {
+          form.reset();
+          window.location.href = getBasePath() + 'thankyou/';
+        }).catch(function () {
+          form.reset();
+          window.location.href = getBasePath() + 'thankyou/';
+        });
       });
     });
+
+    function getBasePath() {
+      var body = document.body;
+      var path = body ? body.getAttribute('data-path') || '' : '';
+      var depth = (path.match(/\//g) || []).length;
+      var base = '';
+      for (var i = 0; i < depth; i++) base += '../';
+      return base || './';
+    }
   }
 
   /* ========================================================================
@@ -5836,7 +5927,30 @@
       state = next;
       write(next);
       hide();
-      if (next === 'granted') release();
+      try {
+        window.localStorage.setItem('kneo_cookie_consent', next);
+      } catch (e) {}
+
+      // Mirror deployed Next.js app GTM consent integration
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': next,
+          'ad_user_data': next,
+          'ad_personalization': next,
+          'analytics_storage': next
+        });
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'cookie_consent_update',
+        consent: next
+      });
+
+      if (next === 'granted') {
+        release();
+        window.dispatchEvent(new Event('kneo_consent_granted'));
+      }
       window.dispatchEvent(new CustomEvent('kneo:consent', { detail: { state: next } }));
     }
 

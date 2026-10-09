@@ -1,12 +1,10 @@
 # =============================================================================
-#  KNEO Automation — Apache configuration
+#  KNEO Automation — Apache configuration (.htaccess for Hostinger)
 #  Upload this file to the web root alongside index.html.
 #
-#  The site is built so its public URLs are IDENTICAL to the ones Google has
-#  already indexed (/about/, /mapp/, /products/pfmea/ and so on). That means no
-#  per-page redirects are needed and no ranking is lost on relaunch. This file
-#  only handles the surrounding behaviour: canonical host, trailing slashes,
-#  the 404 page, compression and caching.
+#  Method A: Internal Rewrites for Legacy & Campaign URLs
+#  Serves new pages under original URLs with NO browser redirect (HTTP 200 OK).
+#  Preserves all campaign UTMs, ad parameters, and prevents ad review/drop-off.
 # =============================================================================
 
 Options -Indexes
@@ -29,34 +27,57 @@ ErrorDocument 404 /404.html
 
   # ---------------------------------------------------------------------------
   # One canonical hostname. kneo.in is the host currently indexed, so www is
-  # redirected to it. If you would rather standardise on www, swap this block
-  # for the commented one below instead of running both.
+  # redirected to it.
   # ---------------------------------------------------------------------------
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
-
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
   # ---------------------------------------------------------------------------
   # Add the trailing slash to real directories, so /about resolves to /about/
   # exactly as it does on the current site. Only fires when the directory
   # actually exists, so it cannot affect anything this site does not serve.
-  #
-  # The old /blog exclusion is gone: the fifteen articles are now built by this
-  # site at their original /blog/<slug>/ addresses, so those URLs must be
-  # handled here like every other page. If a separate blog application is ever
-  # restored on this domain, put the exclusion back or the two will collide.
   # ---------------------------------------------------------------------------
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteCond %{REQUEST_URI} !/$
   RewriteRule ^(.*)$ /$1/ [R=301,L]
 
   # ---------------------------------------------------------------------------
-  # Old flat URLs, in case anything ever linked to the .html form
+  # Ensure trailing slash on legacy product routes so relative assets resolve
   # ---------------------------------------------------------------------------
+  RewriteRule ^products/(mapp-[a-z]+|pfd|control-plan|digital-inspection|cbm|preventive-maintenance|ems|gage-management|incoming-quality)$ /products/$1/ [R=301,L,QSA]
+
+  # ---------------------------------------------------------------------------
+  # Campaign & Legacy Routes — Internal Rewrites (Method A)
+  # Serves new pages under original URLs with NO browser redirect (HTTP 200 OK).
+  # Preserves all campaign UTMs, ad parameters, and prevents ad review/drop-off.
+  # ---------------------------------------------------------------------------
+  # MAPP modules (formerly under /products/)
+  RewriteRule ^products/mapp-eye/?$ /mapp/mapp-eye/index.html [L,QSA]
+  RewriteRule ^products/mapp-trail/?$ /mapp/mapp-trail/index.html [L,QSA]
+  RewriteRule ^products/mapp-adept/?$ /mapp/mapp-adept/index.html [L,QSA]
+  RewriteRule ^products/mapp-sprint/?$ /mapp/mapp-sprint/index.html [L,QSA]
+  RewriteRule ^products/mapp-vita/?$ /mapp/mapp-vita/index.html [L,QSA]
+  RewriteRule ^products/mapp-zen/?$ /mapp/mapp-zen/index.html [L,QSA]
+
+  # Quality 4.0 / Inspection / APQP legacy routes
+  RewriteRule ^products/pfd/?$ /products/drawing-inspection-workflow/index.html [L,QSA]
+  RewriteRule ^products/control-plan/?$ /products/drawing-inspection-workflow/index.html [L,QSA]
+  RewriteRule ^products/digital-inspection/?$ /products/drawing-inspection-workflow/index.html [L,QSA]
+  RewriteRule ^products/gage-management/?$ /products/drawing-inspection-workflow/index.html [L,QSA]
+  RewriteRule ^products/incoming-quality/?$ /products/drawing-inspection-workflow/index.html [L,QSA]
+
+  # Maintenance & IIoT legacy routes
+  RewriteRule ^products/cbm/?$ /mapp/mapp-vita/index.html [L,QSA]
+  RewriteRule ^products/preventive-maintenance/?$ /mapp/mapp-vita/index.html [L,QSA]
+  RewriteRule ^products/ems/?$ /mapp/mapp-eye/index.html [L,QSA]
+
+  # ---------------------------------------------------------------------------
+  # Old flat URLs, in case anything ever requested the .html form directly
+  # Checks THE_REQUEST so internal subrequests to index.html are not redirected.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
   RewriteCond %{REQUEST_URI} !^/404\.html$
-  RewriteRule ^(.+)\.html$ /$1/ [R=301,L]
+  RewriteRule ^ /%1/ [R=301,L]
 </IfModule>
 
 # -----------------------------------------------------------------------------
@@ -77,8 +98,7 @@ ErrorDocument 404 /404.html
 
 # -----------------------------------------------------------------------------
 # Caching. HTML stays short-lived so content edits appear quickly; static
-# assets are cached hard. If you change main.css or main.js, rename the file
-# or add ?v=2 to the link so browsers pick the new one up immediately.
+# assets are cached hard.
 # -----------------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -104,7 +124,7 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 
-  # Sensible baseline security headers
+  # Baseline security headers
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
