@@ -33,6 +33,50 @@ ErrorDocument 404 /404.html
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
   # ---------------------------------------------------------------------------
+  # mail.kneo.in -> main site. The mail subdomain points at this server, so
+  # without this it serves a duplicate copy of the whole website. Only affects
+  # web requests; email (MX/IMAP/SMTP) is unaffected.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^mail\.kneo\.in$ [NC]
+  RewriteRule ^ https://kneo.in%{REQUEST_URI} [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # Old WordPress URLs -> matching new pages. The previous site used
+  # ?page_id= addresses; without these rules every one of them served the
+  # homepage and Google reported them as duplicates. Page IDs were mapped from
+  # the Wayback Machine. The trailing ? drops the old query string.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{QUERY_STRING} (^|&)page_id=93(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-eye/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=111(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-adept/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=118(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-zen/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=128(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-vita/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=141(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-trail/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=148(&|$)
+  RewriteRule ^(index\.php)?$ /mapp/mapp-sprint/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=174(&|$)
+  RewriteRule ^(index\.php)?$ /services/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=192(&|$)
+  RewriteRule ^(index\.php)?$ /services/plc-hmi-scada-robot-programming/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=223(&|$)
+  RewriteRule ^(index\.php)?$ /services/onsite-commissioning/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=(243|343)(&|$)
+  RewriteRule ^(index\.php)?$ /industrial-automation/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=509(&|$)
+  RewriteRule ^(index\.php)?$ /faq/? [R=301,L]
+  RewriteCond %{QUERY_STRING} (^|&)page_id=537(&|$)
+  RewriteRule ^(index\.php)?$ /contact/? [R=301,L]
+
+  # Any other WordPress query URL (?page_id=, ?p=, ?tag=, ?cat=) and /tag/... -> home
+  RewriteCond %{QUERY_STRING} (^|&)(page_id|p|tag|cat)=
+  RewriteRule ^(index\.php)?$ /? [R=301,L]
+  RewriteRule ^tag/ /? [R=301,L]
+
+  # ---------------------------------------------------------------------------
   # Add the trailing slash to real directories, so /about resolves to /about/
   # exactly as it does on the current site. Only fires when the directory
   # actually exists, so it cannot affect anything this site does not serve.

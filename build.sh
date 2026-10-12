@@ -397,6 +397,47 @@ minify_assets() {
 }
 minify_assets
 
+# -----------------------------------------------------------------------------
+# Secret injection.
+#
+# Credentials are stored in .env (never committed — see .gitignore).
+# On Vercel they come from project Environment Variables instead.
+# build.sh replaces the three __PLACEHOLDER__ tokens in the built JS so the
+# source file (main.js) never has to carry live secrets.
+# -----------------------------------------------------------------------------
+# Load .env when running locally (Vercel provides these as real env vars)
+if [ -f "$ROOT/.env" ]; then
+  # shellcheck disable=SC2046
+  export $(grep -v '^\s*#' "$ROOT/.env" | grep -v '^\s*$' | xargs)
+fi
+
+inject_secrets() {
+  local js_out="$DIST/assets/js/main.min.js"
+  local js_src_out="$DIST/assets/js/main.js"
+
+  # Abort with a clear message rather than silently shipping placeholder strings
+  if [ -z "${PABBLY_WEBHOOK_URL:-}" ] || [ -z "${CRM_ENDPOINT:-}" ] || [ -z "${CRM_API_KEY:-}" ]; then
+    echo "" >&2
+    echo "  ! WARNING: One or more secrets are missing from the environment." >&2
+    echo "    PABBLY_WEBHOOK_URL, CRM_ENDPOINT, and CRM_API_KEY must be set." >&2
+    echo "    Copy .env.example to .env and fill in the values, then re-run build.sh." >&2
+    echo "    Forms will NOT work in this build." >&2
+    return
+  fi
+
+  # Substitute in the minified copy (what the site actually loads)
+  for f in "$js_out" "$js_src_out"; do
+    [ -f "$f" ] || continue
+    sed -i \
+      -e "s|__PABBLY_WEBHOOK_URL__|${PABBLY_WEBHOOK_URL}|g" \
+      -e "s|__CRM_ENDPOINT__|${CRM_ENDPOINT}|g" \
+      -e "s|__CRM_API_KEY__|${CRM_API_KEY}|g" \
+      "$f"
+  done
+  echo "Secrets injected into built JS."
+}
+inject_secrets
+
 # Years in business, computed rather than typed. A hardcoded count is wrong
 # from the next New Year onward - the site carried "24+" against a 2003 start
 # date, which had already drifted by one.

@@ -1779,9 +1779,12 @@
      13. FORMS & WHATSAPP WIDGET
      ==================================================================== */
 
-  var PABBLY_WEBHOOK_URL = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZlMDYzMzA0MzI1MjY0NTUzYzUxMzUi_pc';
-  var CRM_ENDPOINT = 'https://kneocentralbackend.mesplatform.com/api/crm/leads';
-  var CRM_API_KEY = 'kneo_crm_B5FjzBSMRzSik9ddwBn9A-Wfv-t5-A-oif7m_KPoZns';
+  // Values below are placeholders replaced at build time by build.sh (local .env)
+  // or by your CI/CD environment variables. See .env.example for setup.
+  // These values are NEVER stored in Git — they are injected into dist/ at build time.
+  var PABBLY_WEBHOOK_URL = '__PABBLY_WEBHOOK_URL__';
+  var CRM_ENDPOINT = '__CRM_ENDPOINT__';
+  var CRM_API_KEY = '__CRM_API_KEY__';
 
   function initForms() {
     // 1. WhatsApp / Contact Modal Controls
@@ -1923,6 +1926,21 @@
         var formattedPhone = countryCode + ' ' + rawPhone;
         var isModal = !!form.closest('#kneoLeadModal');
 
+        // Build CRM URL: prefer the first-touch attribution stored in
+        // localStorage (captured on landing) so UTM tags are not lost when
+        // the visitor browses to a different page before submitting.
+        // Falls back to the current page's query string if nothing is stored.
+        var crmUrl = CRM_ENDPOINT;
+        try {
+          var storedAttribution = localStorage.getItem('kneo_attribution');
+          var attributionParams = storedAttribution
+            ? storedAttribution
+            : new URLSearchParams(window.location.search).toString();
+          if (attributionParams) {
+            crmUrl = CRM_ENDPOINT + '?' + attributionParams;
+          }
+        } catch (e) {}
+
         var payload = {
           name: nameInput.value.trim(),
           email: emailInput.value.trim(),
@@ -1951,7 +1969,7 @@
           return null;
         });
 
-        var crmReq = fetch(CRM_ENDPOINT, {
+        var crmReq = fetch(crmUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -6035,7 +6053,29 @@
     }
   }
 
+  /* ====================================================================
+     ATTRIBUTION — last-touch UTM capture
+     --------------------------------------------------------------------
+     Runs on every page load. If the URL contains any query parameters
+     (utm_source, utm_medium, utm_campaign, etc.) we always overwrite the
+     stored value with the latest ones. Pages with no query params leave
+     the previously stored value alone — so browsing between pages after
+     clicking an ad does not erase that ad's attribution.
+
+     Result: the campaign that most recently brought the visitor to the
+     site (with UTM params in the URL) is the one credited on form submit.
+     ==================================================================== */
+  function initAttribution() {
+    try {
+      var qs = window.location.search;
+      if (!qs) return;                 // no params on this page — keep whatever is stored
+      // Always overwrite: last campaign with params wins
+      localStorage.setItem('kneo_attribution', qs.slice(1));
+    } catch (e) {}
+  }
+
   function boot() {
+    try { initAttribution(); } catch (e) {}  // must run first — captures UTM before anything navigates away
     try { initPreloader(); }  catch (e) {}
     try { initTheme(); }       catch (e) {}
     try { initHeader(); }      catch (e) {}
