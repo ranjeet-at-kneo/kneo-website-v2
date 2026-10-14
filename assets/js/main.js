@@ -2038,6 +2038,86 @@
     }
   }
 
+  /* Channel partner prospect form (/partners/auto-ballooning-prospect/).
+     Posts to the same CRM backend as the lead forms, with the same key; the
+     endpoint is derived from CRM_ENDPOINT's host so no extra secret is needed.
+     Field names go to the API exactly as named in the form. */
+  function initPartnerProspect() {
+    var form = document.getElementById('cp-prospect-form');
+    if (!form) return;
+    var status = form.querySelector('.form__status');
+    var submit = form.querySelector('button[type="submit"]');
+
+    var endpoint = '';
+    try { endpoint = new URL(CRM_ENDPOINT).origin + '/api/crm/channel-partner-prospects'; } catch (e) {}
+
+    function setStatus(kind, msg) {
+      status.textContent = msg || '';
+      status.className = 'form__status' + (msg ? ' is-visible form__status--' + kind : '');
+    }
+
+    function setBusy(busy) {
+      if (!submit) return;
+      submit.disabled = busy;
+      submit.classList.toggle('is-loading', busy);
+      if (busy) { submit.dataset.label = submit.textContent; submit.textContent = 'Submitting...'; }
+      else if (submit.dataset.label) submit.textContent = submit.dataset.label;
+    }
+
+    form.querySelectorAll('input, select, textarea').forEach(function (ctrl) {
+      ctrl.addEventListener('input', function () {
+        var field = ctrl.closest('.field');
+        if (field) field.classList.remove('has-error');
+      });
+    });
+
+    form.addEventListener('reset', function () {
+      form.querySelectorAll('.field.has-error').forEach(function (f) { f.classList.remove('has-error'); });
+      setStatus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (submit && submit.disabled) return;
+
+      var firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(function (ctrl) {
+        var ok = ctrl.value.trim() !== '';
+        var field = ctrl.closest('.field');
+        if (field) field.classList.toggle('has-error', !ok);
+        if (!ok && !firstInvalid) firstInvalid = ctrl;
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        setStatus('err', 'Please fill in all required fields.');
+        return;
+      }
+
+      var fail = 'Submission failed. Please try again or contact us at sales@kneoautomation.com.';
+      if (!endpoint) { setStatus('err', fail); return; }
+
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
+
+      setBusy(true);
+      setStatus();
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Api-Key': CRM_API_KEY },
+        body: JSON.stringify(data)
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        setBusy(false);
+        form.reset(); // clears status via the reset handler, so set it afterwards
+        setStatus('ok', 'Thank you. The prospect details have been submitted.');
+      }).catch(function (err) {
+        console.error('Channel partner prospect submission error:', err);
+        setBusy(false);
+        setStatus('err', fail);
+      });
+    });
+  }
+
   /* ========================================================================
      14. MISC
      ==================================================================== */
@@ -4522,6 +4602,7 @@
     try { initHeroVideo(); }   catch (e) {}
     try { initScrollStart(); } catch (e) {}
     try { initForms(); }       catch (e) {}
+    try { initPartnerProspect(); } catch (e) {}
     try { initEnquiryRouting(); } catch (e) {}
     try { initMisc(); }        catch (e) {}
     try { initCookieConsent(); } catch (e) {}
