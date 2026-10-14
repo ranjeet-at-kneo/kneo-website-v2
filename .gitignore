@@ -20,9 +20,6 @@ desktop.ini
 # Editor/tool backups
 *.bak
 
-# Generated standalone app - build it with: node _tools/build-standalone.js
-dist-app/
-
 # Build output directory (clean deployable source)
 /dist/
 
