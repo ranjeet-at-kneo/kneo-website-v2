@@ -1,0 +1,130 @@
+@TITLE Auto Ballooning – Channel Partner Prospect Form | KNEO Automation
+@DESC Channel partners: register an end-client prospect for KNEO Auto Ballooning software.
+@NAV none
+@ROBOTS noindex, nofollow
+@OUT partners/auto-ballooning-prospect.html
+@@
+<main id="main">
+  <section class="section" style="padding:clamp(3rem,6vw,6rem) 0">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--tr" aria-hidden="true"></div>
+    <div class="container" style="max-width:760px">
+
+      <div class="card" style="padding:clamp(1.5rem,4vw,3rem);position:relative" data-reveal="fade">
+        <span class="eyebrow" style="color:var(--accent)">Channel Partners</span>
+        <h1 class="h2 mb-4">Auto Ballooning – Channel Partner Prospect Form</h1>
+
+        <!-- Not bound to the shared lead-form handler in main.js on purpose; API wiring comes later. -->
+        <form id="cp-prospect-form" class="form" novalidate>
+          <div class="field">
+            <label for="cp-partner-name">Channel Partner's Name <span class="req">*</span></label>
+            <input id="cp-partner-name" name="channel_partner_name" type="text" required>
+            <span class="field__error">Please enter the channel partner's name.</span>
+          </div>
+
+          <div class="field">
+            <label for="cp-company">End Client's Company Name <span class="req">*</span></label>
+            <input id="cp-company" name="end_client_company_name" type="text" required>
+            <span class="field__error">Please enter the end client's company name.</span>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="cp-first-name">End Client's Contact Person First Name</label>
+              <input id="cp-first-name" name="end_client_contact_first_name" type="text">
+            </div>
+            <div class="field">
+              <label for="cp-last-name">End Client's Contact Person Last Name <span class="req">*</span></label>
+              <input id="cp-last-name" name="end_client_contact_last_name" type="text" required>
+              <span class="field__error">Please enter the contact person's last name.</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cp-phone">End Client's Contact Number</label>
+            <input id="cp-phone" name="end_client_contact_number" type="tel">
+          </div>
+
+          <div class="field field--select">
+            <label for="cp-service">Service Interest</label>
+            <select id="cp-service" name="service_interest">
+              <option value="">-None-</option>
+              <option value="Auto Ballooning Software">Auto Ballooning Software</option>
+              <option value="Drawing Inspection Workflow">Drawing Inspection Workflow</option>
+              <option value="PFMEA Software">PFMEA Software</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="cp-location">End Client Location</label>
+            <input id="cp-location" name="end_client_location" type="text">
+          </div>
+
+          <div class="field">
+            <label for="cp-message">Detailed Requirements / Message <span class="req">*</span></label>
+            <textarea id="cp-message" name="message" rows="4" required></textarea>
+            <span class="field__error">Please enter the requirements.</span>
+          </div>
+
+          <div class="form__status" aria-live="polite"></div>
+
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <button class="btn btn--primary" type="submit">Submit</button>
+            <button class="btn btn--secondary" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var form = document.getElementById('cp-prospect-form');
+    if (!form) return;
+    var status = form.querySelector('.form__status');
+
+    function setStatus(kind, msg) {
+      status.textContent = msg || '';
+      status.className = 'form__status' + (msg ? ' is-visible form__status--' + kind : '');
+    }
+
+    form.querySelectorAll('input, select, textarea').forEach(function (ctrl) {
+      ctrl.addEventListener('input', function () {
+        var field = ctrl.closest('.field');
+        if (field) field.classList.remove('has-error');
+      });
+    });
+
+    form.addEventListener('reset', function () {
+      form.querySelectorAll('.field.has-error').forEach(function (f) { f.classList.remove('has-error'); });
+      setStatus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(function (ctrl) {
+        var ok = ctrl.value.trim() !== '';
+        var field = ctrl.closest('.field');
+        if (field) field.classList.toggle('has-error', !ok);
+        if (!ok && !firstInvalid) firstInvalid = ctrl;
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        setStatus('err', 'Please fill in all required fields.');
+        return;
+      }
+
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
+
+      // TODO: POST `data` to the channel-partner API once it is available.
+      console.log('Channel partner prospect payload:', data);
+      form.reset(); // clears status via the reset handler, so set it afterwards
+      setStatus('ok', 'Thank you. The prospect details have been captured.');
+    });
+  })();
+</script>

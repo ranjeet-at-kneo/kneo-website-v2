@@ -89,18 +89,28 @@ declare -a CANONICALS=()
 # lives on both the home page and the MAPP page — so the copies cannot drift.
 # Expanded before every other substitution, so {{BASE}} inside an included file
 # still resolves correctly for the page that pulled it in.
+# Partials may include other partials (the WhatsApp widget pulls in lead-form),
+# capped at a small depth so an include cycle fails loudly instead of hanging.
 # -----------------------------------------------------------------------------
 read -r -d '' PERL_INCLUDE <<'PERLEOF' || true
 my $dir = shift;
-while (my $line = <STDIN>) {
+sub expand {
+  my ($line, $depth) = @_;
   if ($line =~ /^\s*\{\{INCLUDE:([A-Za-z0-9_-]+)\}\}\s*$/) {
-    my $f = "$dir/$1.html";
-    if (open my $fh, '<', $f) { print <$fh>; close $fh; next; }
-    warn "  ! include not found: $1\n";
-    next;
+    my $name = $1;
+    if ($depth >= 5) { warn "  ! include too deep (cycle?): $name\n"; return; }
+    my $f = "$dir/$name.html";
+    if (open my $fh, '<', $f) {
+      expand($_, $depth + 1) while <$fh>;
+      close $fh;
+      return;
+    }
+    warn "  ! include not found: $name\n";
+    return;
   }
   print $line;
 }
+expand($_, 0) while <STDIN>;
 PERLEOF
 
 read -r -d '' PERL_LOGOS <<'PERLEOF' || true
@@ -546,7 +556,7 @@ TODAY=$(date +%Y-%m-%d)
   echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
   for c in "${CANONICALS[@]}"; do
     case "$c" in
-      404.html|thankyou/) continue ;;
+      404.html|thankyou/|partners/auto-ballooning-prospect/) continue ;;
     esac
     prio="0.7"
     [ -z "$c" ] && prio="1.0"
