@@ -2022,6 +2022,18 @@ a.card > .cell__tag { padding-right: 1.75rem; }
 .quote__name { font-family: var(--font-display); font-weight: 700; font-size: .94rem; color: var(--text); }
 .quote__role { font-size: .8rem; color: var(--text-3); margin-top: .1rem; }
 
+/* ---- Leadership / team cards ---- */
+.team-card__photo {
+  width: 96px; height: 96px;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-line);
+  object-fit: cover;
+  background: var(--accent-soft);
+}
+.team-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+.team-card .socials { margin-top: 0; flex: none; }
+
 /* ---- Insight / article cards ---- */
 .article-card {
   --card-pad: clamp(1.5rem, 2.5vw, 2rem);
